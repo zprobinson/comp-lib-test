@@ -51,7 +51,7 @@ type BackgroundColorOption =
   | SecondaryColor
   | SecondaryColorTint;
 
-export type BackgroundColor = `has-text-${BackgroundColorOption}`;
+export type BackgroundColor = `has-background-${BackgroundColorOption}`;
 
 /* ---- Spacing ---- */
 type SpacingDirectionOption = "" | "t" | "r" | "b" | "l" | "x" | "y";
