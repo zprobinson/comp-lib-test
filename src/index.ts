@@ -1,3 +1,5 @@
-import TestComponent from "./TestComponent";
+export { default as Columns } from "./Columns";
+export { default as Column } from "./Column";
+export { default as Block } from "./Block";
 
-export { TestComponent };
+export { default as TestComponent } from "./TestComponent";
