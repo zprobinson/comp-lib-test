@@ -1,5 +1,4 @@
-export { default as Columns } from "./Columns";
-export { ColumnsProps } from "./Columns/Columns";
+export { default as Columns, ColumnsProps } from "./Columns";
 export { default as Column } from "./Column";
 export { default as Block } from "./Block";
 
