@@ -4,4 +4,4 @@ export { default as Block } from "./Block";
 
 export { default as TestComponent } from "./TestComponent";
 
-export { BulmaHelpers, BulmaComponentPropsWithoutRef } from "./types";
+export * from "./types";
