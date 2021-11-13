@@ -11,12 +11,20 @@ import {
   OneOrMore,
 } from "./Columns.types";
 
-export type ColumnsProps = BulmaComponentPropsWithoutRef<"div"> &
+export type ColumnsProps2 = BulmaComponentPropsWithoutRef<"div"> &
   PartialReadonly<{
     gap: OneOrMore<ColumnsGap>;
     responsive: ColumnsResponsiveness;
     options: OneOrMore<ColumnsOptions>;
   }>;
+
+export interface ColumnsProps
+  extends BulmaComponentPropsWithoutRef<"div">,
+    PartialReadonly<{
+      gap: OneOrMore<ColumnsGap>;
+      responsive: ColumnsResponsiveness;
+      options: OneOrMore<ColumnsOptions>;
+    }> {}
 
 const getGapClass: (gap: OneOrMore<ColumnsGap> | undefined) => string = (gap) =>
   gap != null
@@ -25,7 +33,7 @@ const getGapClass: (gap: OneOrMore<ColumnsGap> | undefined) => string = (gap) =>
       : `is-variable ${foldClassNames(gap)}`
     : "";
 
-const Columns: React.FC<ColumnsProps> = ({
+const Columns: React.FC<ColumnsProps2> = ({
   children,
   gap,
   responsive,
