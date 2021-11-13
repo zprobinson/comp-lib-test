@@ -1,1 +1,1 @@
-export { default } from "./Columns";
+export { default, ColumnsProps } from "./Columns";
