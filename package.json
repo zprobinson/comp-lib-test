@@ -40,7 +40,8 @@
   "homepage": "https://github.com/HarveyD/react-component-library#readme",
   "peerDependencies": {
     "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react-dom": ">=16.8.0",
+    "bulma": "^0.9.3"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
