@@ -16,7 +16,8 @@
     "storybook:export": "build-storybook",
     "generate": "node ./util/create-component",
     "prepublishOnly": "npm run build",
-    "local-publish": "npm publish --registry http://localhost:4873"
+    "local-publish": "npm publish --registry http://localhost:4873",
+    "local-patch": "npm version patch && npm run local-publish"
   },
   "repository": {
     "type": "git",
