@@ -1,3 +1,3 @@
-export * as bulma from "./bulma";
-export * as component from "./component";
-export * as utility from "./utility";
+export * from "./bulma.d";
+export * from "./component.d";
+export * from "./utility.d";
