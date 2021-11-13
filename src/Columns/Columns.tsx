@@ -33,7 +33,7 @@ const getGapClass: (gap: OneOrMore<ColumnsGap> | undefined) => string = (gap) =>
       : `is-variable ${foldClassNames(gap)}`
     : "";
 
-const Columns: React.FC<ColumnsProps2> = ({
+const Columns: React.FC<ColumnsProps> = ({
   children,
   gap,
   responsive,
