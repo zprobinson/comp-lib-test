@@ -1,2 +1,3 @@
 export * from "./types";
-export * from "./components/Columns/types";
+export { BulmaHelpers, BulmaComponentPropsWithoutRef } from "./types";
+export { ColumnsProps } from "./Columns/Columns";

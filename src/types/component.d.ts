@@ -21,6 +21,7 @@ import {
   FlexGrow,
   FlexShrink,
   OtherHelpers,
+  TypographySize,
 } from "./bulma";
 import { OneOrMore, PartialReadonly } from "./utility";
 
@@ -53,5 +54,6 @@ export type BulmaHelpers = PartialReadonly<{
   otherHelper: OneOrMore<OtherHelpers>;
 }>;
 
-export type BulmaComponentPropsWithoutRef<T extends React.ElementType> =
-  BulmaHelpers & React.ComponentPropsWithoutRef<T>;
+export type BulmaComponentPropsWithoutRef<
+  T extends React.ElementType
+> = BulmaHelpers & React.ComponentPropsWithoutRef<T>;
