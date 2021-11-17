@@ -6,22 +6,14 @@ import Block from "./Block";
 import { BlockProps } from "./Block.types";
 
 describe("Test Component", () => {
-  let props: BlockProps;
-
-  beforeEach(() => {
-    props = {
-      foo: "bar"
-    };
-  });
-
-  const renderComponent = () => render(<Block {...props} />);
+  const renderComponent = (props: BlockProps) => render(<Block {...props} />);
 
   it("should render foo text correctly", () => {
-    props.foo = "harvey was here";
-    const { getByTestId } = renderComponent();
+    const expected = "harvey was here";
+    const { getByTestId } = renderComponent({ children: expected });
 
     const component = getByTestId("Block");
 
-    expect(component).toHaveTextContent("harvey was here");
+    expect(component).toHaveTextContent(expected);
   });
 });

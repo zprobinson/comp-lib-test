@@ -1,7 +1,6 @@
 export { default as Columns, ColumnsProps } from "./Columns";
-export { default as Column } from "./Column";
-export { default as Block } from "./Block";
-
-export { default as TestComponent } from "./TestComponent";
+export { default as Column, ColumnProps } from "./Column";
+export { default as Block, BlockProps } from "./Block";
+export { default as Box, BoxProps } from "./Box";
 
 export * from "./types";

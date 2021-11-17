@@ -1,4 +1,3 @@
-// Generated with util/create-component.js
-export interface BoxProps {
-    foo: string;
-}
+import { BulmaComponentPropsWithoutRef } from "..";
+
+export type BoxProps = BulmaComponentPropsWithoutRef<"div"> & {};

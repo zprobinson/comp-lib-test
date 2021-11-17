@@ -1,13 +1,23 @@
-// Generated with util/create-component.js
 import React from "react";
 
 import { BoxProps } from "./Box.types";
 
-import "./Box.scss";
+import { partitionBulmaComponentProps } from "../utilities/propUtilities";
+import { foldHelpers, foldClassNames } from "../utilities/listUtils";
 
-const Box: React.FC<BoxProps> = ({ foo }) => (
-    <div data-testid="Box" className="foo-bar">{foo}</div>
-);
+const Box: React.FC<BoxProps> = ({ children, ...props }) => {
+  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"div">(
+    props
+  );
+  const { className, ...rest } = componentProps;
+  const helpers = foldHelpers(bulmaProps);
+  const classNames = foldClassNames([className ?? "", helpers]);
+
+  return (
+    <div data-testid="Box" className={`box ${classNames}`} {...rest}>
+      {children}
+    </div>
+  );
+};
 
 export default Box;
-

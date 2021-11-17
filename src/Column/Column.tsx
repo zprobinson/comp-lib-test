@@ -1,21 +1,7 @@
 import React from "react";
-import { BulmaComponentPropsWithoutRef } from "../types";
-import { PartialReadonly } from "../types/utility";
 import { foldHelpers, foldClassNames } from "../utilities/listUtils";
 import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-import {
-  ColumnNarrow,
-  ColumnOffset,
-  ColumnSize,
-  OneOrMore,
-} from "./Column.types";
-
-export type ColumnProps = BulmaComponentPropsWithoutRef<"div"> &
-  PartialReadonly<{
-    columnSize: OneOrMore<ColumnSize>;
-    offset: OneOrMore<ColumnOffset>;
-    narrow: OneOrMore<ColumnNarrow>;
-  }>;
+import { ColumnProps } from "./Column.types";
 
 const Column: React.FC<ColumnProps> = ({
   children,
@@ -41,7 +27,7 @@ const Column: React.FC<ColumnProps> = ({
   ]);
 
   return (
-    <div className={`column ${classNames}`} {...rest}>
+    <div data-testid="Column" className={`column ${classNames}`} {...rest}>
       {children}
     </div>
   );

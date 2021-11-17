@@ -6,22 +6,14 @@ import Column from "./Column";
 import { ColumnProps } from "./Column.types";
 
 describe("Test Component", () => {
-  let props: ColumnProps;
+  const renderComponent = (props: ColumnProps) => render(<Column {...props} />);
 
-  beforeEach(() => {
-    props = {
-      foo: "bar"
-    };
-  });
-
-  const renderComponent = () => render(<Column {...props} />);
-
-  it("should render foo text correctly", () => {
-    props.foo = "harvey was here";
-    const { getByTestId } = renderComponent();
+  it("should render text correctly", () => {
+    const expected = "harvey was here";
+    const { getByTestId } = renderComponent({ children: expected });
 
     const component = getByTestId("Column");
 
-    expect(component).toHaveTextContent("harvey was here");
+    expect(component).toHaveTextContent(expected);
   });
 });

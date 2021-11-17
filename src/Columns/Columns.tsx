@@ -1,30 +1,8 @@
 import React from "react";
-import { BulmaComponentPropsWithoutRef } from "../types";
-import { PartialReadonly } from "../types/utility";
 import { strValueOr } from "../utilities/functionalUtils";
 import { foldClassNames, foldHelpers } from "../utilities/listUtils";
 import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-import {
-  ColumnsGap,
-  ColumnsOptions,
-  ColumnsResponsiveness,
-  OneOrMore,
-} from "./Columns.types";
-
-export type ColumnsProps2 = BulmaComponentPropsWithoutRef<"div"> &
-  PartialReadonly<{
-    gap: OneOrMore<ColumnsGap>;
-    responsive: ColumnsResponsiveness;
-    options: OneOrMore<ColumnsOptions>;
-  }>;
-
-export interface ColumnsProps
-  extends BulmaComponentPropsWithoutRef<"div">,
-    PartialReadonly<{
-      gap: OneOrMore<ColumnsGap>;
-      responsive: ColumnsResponsiveness;
-      options: OneOrMore<ColumnsOptions>;
-    }> {}
+import { ColumnsGap, ColumnsProps, OneOrMore } from "./Columns.types";
 
 const getGapClass: (gap: OneOrMore<ColumnsGap> | undefined) => string = (gap) =>
   gap != null
@@ -57,7 +35,7 @@ const Columns: React.FC<ColumnsProps> = ({
   ]);
 
   return (
-    <div className={`columns ${classNames}`} {...rest}>
+    <div data-testid="Columns" className={`columns ${classNames}`} {...rest}>
       {children}
     </div>
   );

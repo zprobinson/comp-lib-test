@@ -1,9 +1,7 @@
 import React from "react";
-import { BulmaComponentPropsWithoutRef } from "../types";
 import { foldClassNames, foldHelpers } from "../utilities/listUtils";
 import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-
-export type BlockProps = BulmaComponentPropsWithoutRef<"div">;
+import { BlockProps } from "./Block.types";
 
 const Block: React.FC<BlockProps> = ({ children, ...props }) => {
   const { bulmaProps, componentProps } = partitionBulmaComponentProps<"div">(
@@ -13,7 +11,7 @@ const Block: React.FC<BlockProps> = ({ children, ...props }) => {
   const helpers = foldHelpers(bulmaProps);
   const classNames = foldClassNames([className ?? "", helpers]);
   return (
-    <div className={`block ${classNames}`} {...rest}>
+    <div data-testid="Block" className={`block ${classNames}`} {...rest}>
       {children}
     </div>
   );

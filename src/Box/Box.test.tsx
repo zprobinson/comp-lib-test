@@ -6,22 +6,15 @@ import Box from "./Box";
 import { BoxProps } from "./Box.types";
 
 describe("Test Component", () => {
-  let props: BoxProps;
+  const renderComponent = (props: BoxProps) => render(<Box {...props} />);
 
-  beforeEach(() => {
-    props = {
-      foo: "bar"
-    };
-  });
+  it("should render children text correctly", () => {
+    const expected = "some text blah dee blah";
 
-  const renderComponent = () => render(<Box {...props} />);
-
-  it("should render foo text correctly", () => {
-    props.foo = "harvey was here";
-    const { getByTestId } = renderComponent();
+    const { getByTestId } = renderComponent({ children: expected });
 
     const component = getByTestId("Box");
 
-    expect(component).toHaveTextContent("harvey was here");
+    expect(component).toHaveTextContent(expected);
   });
 });

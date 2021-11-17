@@ -1,5 +1,13 @@
+import { BulmaComponentPropsWithoutRef, OneOrMore, PartialReadonly } from "..";
 import { Breakpoint } from "../types/bulma";
 export { OneOrMore } from "../types/utility";
+
+export type ColumnsProps = BulmaComponentPropsWithoutRef<"div"> &
+  PartialReadonly<{
+    gap: OneOrMore<ColumnsGap>;
+    responsive: ColumnsResponsiveness;
+    options: OneOrMore<ColumnsOptions>;
+  }>;
 
 /* --- Columns Options ---- */
 type GapOption = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8";
