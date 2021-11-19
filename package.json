@@ -17,7 +17,8 @@
     "generate": "node ./util/create-component",
     "prepublishOnly": "npm run build",
     "local-publish": "npm publish --registry http://localhost:4873",
-    "local-patch": "npm version patch && npm run local-publish"
+    "local-patch": "npm version patch && npm run local-publish",
+    "compile": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
