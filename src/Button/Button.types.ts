@@ -1,5 +1,5 @@
 import { MouseEventHandler } from "react";
-import { BulmaComponentPropsWithoutRef, OneOrMore, PrimaryColor } from "..";
+import { BulmaComponentPropsWithoutRef, Is, OneOrMore, PrimaryColor } from "..";
 
 export type ButtonProps = BulmaComponentPropsWithoutRef<"button"> & {
   onClick: MouseEventHandler<HTMLButtonElement>;
@@ -13,20 +13,15 @@ export type ButtonProps = BulmaComponentPropsWithoutRef<"button"> & {
 type Size = "small" | "normal" | "medium" | "large";
 type State = "hovered" | "focused" | "active" | "loading";
 
-type ButtonColorOption = `is-${PrimaryColor}`;
+type ButtonColorOption = Is<PrimaryColor>;
 type ButtonColorLightOption = `${ButtonColorOption} is-light`;
 
 export type ButtonColor =
-  | "is-text"
-  | "is-ghost"
+  | Is<"text" | "ghost">
   | ButtonColorOption
   | ButtonColorLightOption;
-export type ButtonSize = `is-${Size}`;
-export type ButtonState = `is-${State}`;
-export type ButtonModifier =
-  | "is-fullwidth"
-  | "is-outlined"
-  | "is-inverted"
-  | "is-rounded"
-  | "is-static"
-  | "is-selected";
+export type ButtonSize = Is<Size>;
+export type ButtonState = Is<State>;
+export type ButtonModifier = Is<
+  "fullwidth" | "outlined" | "inverted" | "rounded" | "static" | "selected"
+>;

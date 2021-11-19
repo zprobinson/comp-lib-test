@@ -1,4 +1,9 @@
-import { BulmaComponentPropsWithoutRef, OneOrMore, PartialReadonly } from "..";
+import {
+  BulmaComponentPropsWithoutRef,
+  Is,
+  OneOrMore,
+  PartialReadonly,
+} from "..";
 import { Breakpoint } from "../types/bulma";
 export { OneOrMore } from "../types/utility";
 
@@ -11,17 +16,18 @@ export type ColumnProps = BulmaComponentPropsWithoutRef<"div"> &
 
 /* --- Columns Options ---- */
 type GapOption = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8";
+type GapBreakpointOption = `${GapOption}-${Breakpoint}`;
 
 export type ColumnsGap =
-  | `is-${GapOption}`
-  | `is-${GapOption}-${Breakpoint}`
-  | "is-gapless";
+  | Is<GapOption>
+  | Is<GapBreakpointOption>
+  | Is<"gapless">;
 
 type ColumnsResponsivenessOption = "mobile" | "desktop";
-export type ColumnsResponsiveness = `is-${ColumnsResponsivenessOption}`;
+export type ColumnsResponsiveness = Is<ColumnsResponsivenessOption>;
 
 type ColumnsOptionsOption = "vcentered" | "multiline" | "centered";
-export type ColumnsOptions = `is-${ColumnsOptionsOption}`;
+export type ColumnsOptions = Is<ColumnsOptionsOption>;
 
 /* ---- Column Options ---- */
 type ColumnSizeOption =
@@ -47,10 +53,9 @@ type ColumnSizeOption =
   | "10"
   | "11"
   | "12";
+type ColumnSizeBreakpointOption = `${ColumnSizeOption}-${Breakpoint}`;
 
-export type ColumnSize =
-  | `is-${ColumnSizeOption}`
-  | `is-${ColumnSizeOption}-${Breakpoint}`;
+export type ColumnSize = Is<ColumnSizeOption> | Is<ColumnSizeBreakpointOption>;
 export type ColumnOffset =
   | `is-offset-${ColumnSizeOption}`
   | `is-offset-${ColumnSizeOption}-${Breakpoint}`;
