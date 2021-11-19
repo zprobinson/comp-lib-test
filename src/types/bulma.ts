@@ -13,7 +13,7 @@ type OnlyBreakpoint = `${Extract<
 >}-only`;
 
 /* ---- Colors ---- */
-type PrimaryColor =
+export type PrimaryColor =
   | "primary"
   | "link"
   | "info"
