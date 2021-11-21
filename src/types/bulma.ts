@@ -123,7 +123,7 @@ type CombinedDisplayClassOption =
   | `${DisplayClassOption}-${ResponsiveDisplayClassOption}`;
 
 // Show
-export type DisplayShow = `is-${CombinedDisplayClassOption}`;
+export type DisplayShow = Is<CombinedDisplayClassOption>;
 
 // Hide
 export type DisplayHide =
@@ -226,7 +226,7 @@ type OtherHelpersOption =
   | Clickable
   | PositionRelative;
 
-export type OtherHelpers = `is-${OtherHelpersOption}`;
+export type OtherHelpers = Is<OtherHelpersOption>;
 
 /* ---- Size ---- */
 export type Size = Is<"small" | "normal" | "medium" | "large">;
