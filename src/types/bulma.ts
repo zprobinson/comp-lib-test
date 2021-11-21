@@ -1,3 +1,5 @@
+import { Is } from ".";
+
 /* ---- Responsive Breakpoints ---- */
 export type Breakpoint =
   | "mobile"
@@ -225,3 +227,6 @@ type OtherHelpersOption =
   | PositionRelative;
 
 export type OtherHelpers = `is-${OtherHelpersOption}`;
+
+/* ---- Size ---- */
+export type Size = Is<"small" | "normal" | "medium" | "large">;
