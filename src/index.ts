@@ -5,5 +5,6 @@ export { default as Box, BoxProps } from "./Box";
 export { default as Button, ButtonProps } from "./Button";
 export { default as Content, ContentProps } from "./Content";
 export { default as Delete, DeleteProps } from "./Delete";
+export { default as Icon, IconProps, IconText, IconTextProps } from "./Icon";
 
 export * from "./types";
