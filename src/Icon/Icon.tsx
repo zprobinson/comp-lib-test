@@ -10,7 +10,9 @@ const Icon: React.FC<IconProps> = ({
   iconFontClass,
   ...props
 }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps(props);
+  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"span">(
+    props
+  );
   const { className, ...rest } = componentProps;
   const helpers = foldHelpers(bulmaProps);
   const classNames = foldClassNames([
