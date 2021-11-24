@@ -7,5 +7,6 @@ export { default as Content, ContentProps } from "./Content";
 export { default as Delete, DeleteProps } from "./Delete";
 export { default as Icon, IconProps, IconText, IconTextProps } from "./Icon";
 export { default as Image, ImageProps } from "./Image";
+export { default as Notification, NotificationProps } from "./Notification";
 
 export * from "./types";
