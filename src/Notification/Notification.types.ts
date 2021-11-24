@@ -3,6 +3,7 @@ import {
   DeleteProps,
   Is,
   PrimaryColor,
+  SecondaryColor,
 } from "..";
 
 export type NotificationProps = BulmaComponentPropsWithoutRef<"div"> & {
@@ -16,4 +17,5 @@ type NotificationColorLightOption = `${NotificationColorOption} is-light`;
 
 export type NotificationColor =
   | NotificationColorOption
+  | Is<SecondaryColor>
   | NotificationColorLightOption;

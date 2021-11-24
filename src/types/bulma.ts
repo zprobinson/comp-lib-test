@@ -23,7 +23,7 @@ export type PrimaryColor =
   | "warning"
   | "danger";
 
-type SecondaryColor = "white" | "black" | Tint;
+export type SecondaryColor = "white" | "black" | Tint;
 
 type Tint = "dark" | "light";
 type BlackSuffix = "bis" | "ter";

@@ -4,6 +4,7 @@ import {
   Is,
   OneOrMore,
   PrimaryColor,
+  SecondaryColor,
   Size,
 } from "..";
 
@@ -23,6 +24,7 @@ type ButtonColorLightOption = `${ButtonColorOption} is-light`;
 
 export type ButtonColor =
   | Is<"text" | "ghost">
+  | Is<SecondaryColor>
   | ButtonColorOption
   | ButtonColorLightOption;
 export type ButtonSize = Size;
