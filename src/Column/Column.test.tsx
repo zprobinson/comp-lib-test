@@ -5,7 +5,7 @@ import { render } from "@testing-library/react";
 import Column from "./Column";
 import { ColumnProps } from "./Column.types";
 
-describe("Test Component", () => {
+describe("Column Component", () => {
   const renderComponent = (props: ColumnProps) => render(<Column {...props} />);
 
   it("should render text correctly", () => {

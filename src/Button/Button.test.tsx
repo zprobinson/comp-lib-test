@@ -4,7 +4,7 @@ import { render, fireEvent } from "@testing-library/react";
 import Button from "./Button";
 import { ButtonProps } from "./Button.types";
 
-describe("Test Component", () => {
+describe("Button Component", () => {
   const renderComponent = (props: ButtonProps) => render(<Button {...props} />);
 
   it("should render children text correctly", () => {

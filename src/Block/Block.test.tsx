@@ -5,7 +5,7 @@ import { render } from "@testing-library/react";
 import Block from "./Block";
 import { BlockProps } from "./Block.types";
 
-describe("Test Component", () => {
+describe("Block Component", () => {
   const renderComponent = (props: BlockProps) => render(<Block {...props} />);
 
   it("should render foo text correctly", () => {

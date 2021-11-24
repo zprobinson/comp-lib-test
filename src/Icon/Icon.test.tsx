@@ -5,7 +5,7 @@ import Icon from "./Icon";
 import IconText from "./IconText";
 import { IconProps, IconTextProps } from "./Icon.types";
 
-describe("Icon", () => {
+describe("Icon Component", () => {
   const renderComponent = (props: IconProps) => render(<Icon {...props} />);
 
   it("should render foo text correctly", () => {
@@ -18,7 +18,7 @@ describe("Icon", () => {
   });
 });
 
-describe("Icon Text", () => {
+describe("Icon Test Component", () => {
   const renderComponent = (props: IconTextProps) =>
     render(<IconText {...props} />);
 

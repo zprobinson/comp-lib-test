@@ -4,7 +4,7 @@ import { render } from "@testing-library/react";
 import ProgressBar from "./ProgressBar";
 import { ProgressBarProps } from "./ProgressBar.types";
 
-describe("Test Component", () => {
+describe("Progress Bar Component", () => {
   const renderComponent = (props: ProgressBarProps) =>
     render(<ProgressBar {...props} />);
 

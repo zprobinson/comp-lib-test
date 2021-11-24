@@ -4,7 +4,7 @@ import { render } from "@testing-library/react";
 import Content from "./Content";
 import { ContentProps } from "./Content.types";
 
-describe("Test Component", () => {
+describe("Content Component", () => {
   const renderComponent = (props: ContentProps) =>
     render(<Content {...props} />);
 

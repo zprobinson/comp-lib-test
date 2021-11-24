@@ -4,7 +4,7 @@ import { render } from "@testing-library/react";
 import Image from "./Image";
 import { ImageProps } from "./Image.types";
 
-describe("Test Component", () => {
+describe("Image Component", () => {
   const renderComponent = (props: ImageProps) => render(<Image {...props} />);
 
   it("should render foo text correctly", () => {

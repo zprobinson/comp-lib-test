@@ -5,7 +5,7 @@ import { render } from "@testing-library/react";
 import Columns from "./Columns";
 import { ColumnsProps } from "./Columns.types";
 
-describe("Test Component", () => {
+describe("Columns Component", () => {
   const renderComponent = (props: ColumnsProps) =>
     render(<Columns {...props} />);
 

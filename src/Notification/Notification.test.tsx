@@ -4,7 +4,7 @@ import { render, fireEvent } from "@testing-library/react";
 import Notification from "./Notification";
 import { NotificationProps } from "./Notification.types";
 
-describe("Test Component", () => {
+describe("Notification Component", () => {
   const renderComponent = (props: NotificationProps) =>
     render(<Notification {...props} />);
 

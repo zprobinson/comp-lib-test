@@ -9,5 +9,6 @@ export { default as Icon, IconProps, IconText, IconTextProps } from "./Icon";
 export { default as Image, ImageProps } from "./Image";
 export { default as Notification, NotificationProps } from "./Notification";
 export { default as ProgressBar, ProgressBarProps } from "./ProgressBar";
+export { default as Tag, TagProps, Tags, TagsProps } from "./Tag";
 
 export * from "./types";
