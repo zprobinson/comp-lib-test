@@ -23,6 +23,7 @@ const Tag: React.FC<TagProps> = ({
     isDelete ? "is-delete" : "",
     helpers,
   ]);
+
   const RenderAs = isDelete ? "a" : renderAs;
 
   return (
