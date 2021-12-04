@@ -11,5 +11,23 @@ export { default as Notification, NotificationProps } from "./Notification";
 export { default as ProgressBar, ProgressBarProps } from "./ProgressBar";
 export { default as Tag, TagProps, Tags, TagsProps } from "./Tag";
 export { default as Title, Subtitle, TitleProps, SubtitleProps } from "./Title";
+export {
+  Table,
+  TableProps,
+  TableBody,
+  TableBodyProps,
+  TableHeader,
+  TableHeaderProps,
+  TableFooter,
+  TableFooterProps,
+  TableRow,
+  TableRowProps,
+  TableDataCell,
+  TableDataCellProps,
+  TableHeaderCell,
+  TableHeaderCellProps,
+  TableContainer,
+  TableContainerProps,
+} from "./Table";
 
 export * from "./types";
