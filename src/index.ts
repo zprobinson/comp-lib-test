@@ -12,6 +12,12 @@ export { default as ProgressBar, ProgressBarProps } from "./ProgressBar";
 export { default as Tag, TagProps, Tags, TagsProps } from "./Tag";
 export { default as Title, Subtitle, TitleProps, SubtitleProps } from "./Title";
 export {
+  default as Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbProps,
+  BreadcrumbItemProps,
+} from "./Breadcrumb";
+export {
   Table,
   TableProps,
   TableBody,

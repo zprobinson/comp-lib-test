@@ -1,9 +1,8 @@
 import React from "react";
-
-import { BoxProps } from "./Box.types";
-
 import { partitionBulmaComponentProps } from "../utilities/propUtilities";
 import { foldHelpers, foldClassNames } from "../utilities/listUtils";
+
+import { BoxProps } from "./Box.types";
 
 const Box: React.FC<BoxProps> = ({ children, ...props }) => {
   const { bulmaProps, componentProps } = partitionBulmaComponentProps<"div">(
