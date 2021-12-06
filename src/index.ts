@@ -35,5 +35,13 @@ export {
   TableContainer,
   TableContainerProps,
 } from "./Table";
+export {
+  default as Message,
+  MessageProps,
+  MessageHeader,
+  MessageHeaderProps,
+  MessageBody,
+  MessageBodyProps,
+} from "./Message";
 
 export * from "./types";
