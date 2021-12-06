@@ -43,5 +43,22 @@ export {
   MessageBody,
   MessageBodyProps,
 } from "./Message";
-
+export {
+  Card,
+  CardProps,
+  CardHeader,
+  CardHeaderProps,
+  CardHeaderTitle,
+  CardHeaderTitleProps,
+  CardHeaderIcon,
+  CardHeaderIconProps,
+  CardImage,
+  CardImageProps,
+  CardContent,
+  CardContentProps,
+  CardFooter,
+  CardFooterProps,
+  CardFooterItem,
+  CardFooterItemProps,
+} from "./Card";
 export * from "./types";
