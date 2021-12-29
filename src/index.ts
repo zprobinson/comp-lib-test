@@ -1,66 +1,20 @@
-export { default as Columns, ColumnsProps } from "./Columns";
-export { default as Column, ColumnProps } from "./Column";
-export { default as Block, BlockProps } from "./Block";
-export { default as Box, BoxProps } from "./Box";
-export { default as Button, ButtonProps } from "./Button";
-export { default as Content, ContentProps } from "./Content";
-export { default as Delete, DeleteProps } from "./Delete";
-export { default as Icon, IconProps, IconText, IconTextProps } from "./Icon";
-export { default as Image, ImageProps } from "./Image";
-export { default as Notification, NotificationProps } from "./Notification";
-export { default as ProgressBar, ProgressBarProps } from "./ProgressBar";
-export { default as Tag, TagProps, Tags, TagsProps } from "./Tag";
-export { default as Title, Subtitle, TitleProps, SubtitleProps } from "./Title";
-export {
-  default as Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbProps,
-  BreadcrumbItemProps,
-} from "./Breadcrumb";
-export {
-  Table,
-  TableProps,
-  TableBody,
-  TableBodyProps,
-  TableHeader,
-  TableHeaderProps,
-  TableFooter,
-  TableFooterProps,
-  TableRow,
-  TableRowProps,
-  TableDataCell,
-  TableDataCellProps,
-  TableHeaderCell,
-  TableHeaderCellProps,
-  TableContainer,
-  TableContainerProps,
-} from "./Table";
-export {
-  default as Message,
-  MessageProps,
-  MessageHeader,
-  MessageHeaderProps,
-  MessageBody,
-  MessageBodyProps,
-} from "./Message";
-export {
-  Card,
-  CardProps,
-  CardHeader,
-  CardHeaderProps,
-  CardHeaderTitle,
-  CardHeaderTitleProps,
-  CardHeaderIcon,
-  CardHeaderIconProps,
-  CardImage,
-  CardImageProps,
-  CardContent,
-  CardContentProps,
-  CardFooter,
-  CardFooterProps,
-  CardFooterItem,
-  CardFooterItemProps,
-} from "./Card";
+export * from "./Columns";
+export * from "./Column";
+export * from "./Block";
+export * from "./Box";
+export * from "./Button";
+export * from "./Content";
+export * from "./Delete";
+export * from "./Icon";
+export * from "./Image";
+export * from "./Notification";
+export * from "./ProgressBar";
+export * from "./Tag";
+export * from "./Title";
+export * from "./Breadcrumb";
+export * from "./Table";
+export * from "./Message";
+export * from "./Card";
 export * from "./Dropdown";
 export * from "./Menu";
 export * from "./types";
