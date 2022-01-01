@@ -18,4 +18,5 @@ export * from "./Card";
 export * from "./Dropdown";
 export * from "./Menu";
 export * from "./Modal";
+export * from "./Navbar";
 export * from "./types";
