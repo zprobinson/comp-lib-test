@@ -17,4 +17,5 @@ export * from "./Message";
 export * from "./Card";
 export * from "./Dropdown";
 export * from "./Menu";
+export * from "./Modal";
 export * from "./types";
