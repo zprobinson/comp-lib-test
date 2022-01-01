@@ -3,20 +3,21 @@ import { BulmaHelpers } from "..";
 import { partitionBulmaPropsG } from "../utilities/propUtilities";
 import { foldClassNames, foldHelpers } from "../utilities/listUtils";
 
-const NavbarItemCustom = <TProps extends { className?: string } = {}>(
+const NavbarItemCustom = <TProps extends {} = {}>(
   WrappedComponent: React.ComponentType<TProps>
 ) => {
-  const ComponentWithBulmaProps = (props: TProps & BulmaHelpers) => {
+  const ComponentWithBulmaProps = (
+    props: TProps & BulmaHelpers & { className?: string }
+  ) => {
     const { bulmaProps, componentProps } = partitionBulmaPropsG<TProps>(props);
-    const { className, ...rest } = componentProps;
     const helpers = foldHelpers(bulmaProps);
-    const classNames = foldClassNames([className ?? "", helpers]);
+    const classNames = foldClassNames([props.className ?? "", helpers]);
 
     return (
       <WrappedComponent
         data-testid="NavbarItemCustom"
         className={classNames}
-        {...(rest as TProps)}
+        {...(componentProps as TProps)}
       />
     );
   };
