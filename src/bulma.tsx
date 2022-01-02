@@ -1,5 +1,5 @@
 import React from "react";
-import { BulmaHelpers } from "..";
+import { BulmaHelpers } from "./types";
 import { partitionBulmaPropsG } from "./utilities/propUtilities";
 import { foldClassNames, foldHelpers } from "./utilities/listUtils";
 
