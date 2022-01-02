@@ -1,4 +1,4 @@
-import { MouseEventHandler } from "react";
+import { ComponentPropsWithoutRef, MouseEventHandler } from "react";
 import {
   BulmaComponentPropsWithoutRef,
   Is,
@@ -7,6 +7,15 @@ import {
   SecondaryColor,
   Size,
 } from "..";
+
+export type InnerButtonProps = ComponentPropsWithoutRef<"button"> & {
+  onClick: MouseEventHandler<HTMLButtonElement>;
+  color?: ButtonColor;
+  size?: ButtonSize;
+  state?: Exclude<ButtonState, "is-loading">;
+  modifiers?: OneOrMore<ButtonModifier>;
+  isLoading?: boolean;
+};
 
 export type ButtonProps = BulmaComponentPropsWithoutRef<"button"> & {
   onClick: MouseEventHandler<HTMLButtonElement>;
