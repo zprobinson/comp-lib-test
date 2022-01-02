@@ -20,3 +20,4 @@ export * from "./Menu";
 export * from "./Modal";
 export * from "./Navbar";
 export * from "./types";
+export * from "./bulma";
