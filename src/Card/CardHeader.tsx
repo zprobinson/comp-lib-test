@@ -1,26 +1,20 @@
 import React from "react";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
+import withBulmaProps from "../bulma";
 
-import { CardHeaderProps } from "./Card.types";
-
-const CardHeader: React.FC<CardHeaderProps> = ({ children, ...props }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"header">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
-  const classNames = foldClassNames([className ?? "", helpers]);
-
+const CardHeader: React.FC<React.ComponentPropsWithoutRef<"header">> = ({
+  children,
+  className,
+  ...props
+}) => {
   return (
     <header
       data-testid="CardHeader"
-      className={`card-header ${classNames}`}
-      {...rest}
+      className={`card-header ${className}`}
+      {...props}
     >
       {children}
     </header>
   );
 };
 
-export default CardHeader;
+export default withBulmaProps(CardHeader);

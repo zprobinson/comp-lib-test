@@ -1,4 +1,9 @@
-import { BulmaComponentPropsWithoutRef } from "./../types/component";
+import {
+  BulmaComponentPropsWithoutRef,
+  WithoutHelpers,
+} from "./../types/component";
+
+export type InnerCardHeaderTitleProps = WithoutHelpers<CardHeaderTitleProps>;
 
 export type CardProps = BulmaComponentPropsWithoutRef<"div">;
 
@@ -13,4 +18,5 @@ export type CardImageProps = BulmaComponentPropsWithoutRef<"div">;
 export type CardContentProps = BulmaComponentPropsWithoutRef<"div">;
 
 export type CardFooterProps = BulmaComponentPropsWithoutRef<"footer">;
-export type CardFooterItemProps = BulmaComponentPropsWithoutRef<"a">;
+export type CardFooterItemAnchorProps = BulmaComponentPropsWithoutRef<"a">;
+export type CardFooterItemParagraphProps = BulmaComponentPropsWithoutRef<"div">;

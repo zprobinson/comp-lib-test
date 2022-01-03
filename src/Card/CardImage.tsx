@@ -1,26 +1,20 @@
 import React from "react";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
+import withBulmaProps from "../bulma";
 
-import { CardImageProps } from "./Card.types";
-
-const CardImage: React.FC<CardImageProps> = ({ children, ...props }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"div">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
-  const classNames = foldClassNames([className ?? "", helpers]);
-
+const CardImage: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
+  children,
+  className,
+  ...props
+}) => {
   return (
     <div
       data-testid="CardImage"
-      className={`card-image ${classNames}`}
-      {...rest}
+      className={`card-image ${className}`}
+      {...props}
     >
       {children}
     </div>
   );
 };
 
-export default CardImage;
+export default withBulmaProps(CardImage);

@@ -1,4 +1,3 @@
-// Generated with util/create-component.js
 import React from "react";
 import { render } from "@testing-library/react";
 
@@ -9,10 +8,12 @@ import CardHeaderIcon from "./CardHeaderIcon";
 import CardImage from "./CardImage";
 import CardContent from "./CardContent";
 import CardFooter from "./CardFooter";
-import CardFooterItem from "./CardFooterItem";
+import CardFooterItemAnchor from "./CardFooterItemAnchor";
+import CardFooterItemParagraph from "./CardFooterItemParagraph";
 import {
   CardContentProps,
-  CardFooterItemProps,
+  CardFooterItemAnchorProps,
+  CardFooterItemParagraphProps,
   CardFooterProps,
   CardHeaderIconProps,
   CardHeaderProps,
@@ -117,9 +118,25 @@ describe("Card Component", () => {
     });
   });
 
-  describe("Card Footer Item Component", () => {
-    const renderComponent = (props: CardFooterItemProps) =>
-      render(<CardFooterItem {...props} />);
+  describe("Card Footer Item Anchor Component", () => {
+    const renderComponent = (props: CardFooterItemAnchorProps) =>
+      render(<CardFooterItemAnchor {...props} />);
+
+    it("should render children correctly", () => {
+      const expected = "harvey was here";
+      const { getByTestId } = renderComponent({
+        children: expected,
+      });
+
+      const component = getByTestId("CardFooterItem");
+
+      expect(component).toHaveTextContent(expected);
+    });
+  });
+
+  describe("Card Footer Item Paragraph Component", () => {
+    const renderComponent = (props: CardFooterItemParagraphProps) =>
+      render(<CardFooterItemParagraph {...props} />);
 
     it("should render children correctly", () => {
       const expected = "harvey was here";
