@@ -1,4 +1,7 @@
+import { WithoutHelpers } from "./../types/component";
 import { BulmaComponentPropsWithoutRef, Is } from "..";
+
+export type InnerImageProps = WithoutHelpers<ImageProps>;
 
 export type ImageProps = BulmaComponentPropsWithoutRef<"figure"> & {
   dimension: FixedSquare | Ratio;
