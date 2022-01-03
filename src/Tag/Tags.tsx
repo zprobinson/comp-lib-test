@@ -1,32 +1,27 @@
 import React from "react";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
+import withBulmaProps from "../bulma";
+import { foldClassNames } from "../utilities/listUtils";
 
-import { TagsProps } from "./Tags.types";
+import { InnerTagsProps } from "./Tags.types";
 
-const Tags: React.FC<TagsProps> = ({
+const Tags: React.FC<InnerTagsProps> = ({
   children,
+  className,
   groupSize,
   hasAddons = false,
   ...props
 }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"div">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
   const classNames = foldClassNames([
     className ?? "",
     groupSize ?? "",
     hasAddons ? "has-addons" : "",
-    helpers,
   ]);
 
   return (
-    <div data-testid="Tags" className={`tags ${classNames}`} {...rest}>
+    <div data-testid="Tags" className={`tags ${classNames}`} {...props}>
       {children}
     </div>
   );
 };
 
-export default Tags;
+export default withBulmaProps(Tags);

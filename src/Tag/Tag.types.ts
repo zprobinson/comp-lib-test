@@ -1,15 +1,24 @@
 import {
   BulmaComponentPropsWithoutRef,
+  WithoutHelpers,
   Is,
   PrimaryColor,
   SecondaryColor,
   Size,
-} from "..";
+} from "../types";
 
-export type TagProps = BulmaComponentPropsWithoutRef<"span"> & {
+export type InnerTagAnchorProps = WithoutHelpers<TagAnchorProps>;
+export type InnerTagSpanProps = WithoutHelpers<TagSpanProps>;
+
+export type TagAnchorProps = BulmaComponentPropsWithoutRef<"a"> & {
   color?: TagColor;
   size?: Exclude<Size, "is-small">;
-  renderAs?: "span" | "a";
+  isDelete?: boolean;
+};
+
+export type TagSpanProps = BulmaComponentPropsWithoutRef<"span"> & {
+  color?: TagColor;
+  size?: Exclude<Size, "is-small">;
   isDelete?: boolean;
 };
 
