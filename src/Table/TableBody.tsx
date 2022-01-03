@@ -1,22 +1,18 @@
 import React from "react";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
+import withBulmaProps from "../bulma";
 
-import { TableBodyProps } from "./Table.types";
+import { InnerTableBodyProps } from "./Table.types";
 
-const TableBody: React.FC<TableBodyProps> = ({ children, ...props }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"tbody">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
-  const classNames = foldClassNames([className ?? "", helpers]);
-
+const TableBody: React.FC<InnerTableBodyProps> = ({
+  children,
+  className,
+  ...props
+}) => {
   return (
-    <tbody data-testid="TableBody" className={classNames} {...rest}>
+    <tbody data-testid="TableBody" className={className} {...props}>
       {children}
     </tbody>
   );
 };
 
-export default TableBody;
+export default withBulmaProps(TableBody);

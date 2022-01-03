@@ -1,25 +1,18 @@
 import React from "react";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
+import withBulmaProps from "../bulma";
 
-import { TableDataCellProps } from "./Table.types";
+import { InnerTableDataCellProps } from "./Table.types";
 
-const TableDataCell: React.FC<TableDataCellProps> = ({
+const TableDataCell: React.FC<InnerTableDataCellProps> = ({
   children,
+  className,
   ...props
 }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"td">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
-  const classNames = foldClassNames([className ?? "", helpers]);
-
   return (
-    <td data-testid="TableDataCell" className={classNames} {...rest}>
+    <td data-testid="TableDataCell" className={className} {...props}>
       {children}
     </td>
   );
 };
 
-export default TableDataCell;
+export default withBulmaProps(TableDataCell);
