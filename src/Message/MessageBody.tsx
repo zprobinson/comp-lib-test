@@ -1,26 +1,20 @@
 import React from "react";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
+import withBulmaProps from "../bulma";
 
-import { MessageBodyProps } from "./Message.types";
-
-const MessageBody: React.FC<MessageBodyProps> = ({ children, ...props }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"div">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
-  const classNames = foldClassNames([className ?? "", helpers]);
-
+const MessageBody: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
+  children,
+  className,
+  ...props
+}) => {
   return (
     <div
       data-testid="MessageBody"
-      className={`message-body ${classNames}`}
-      {...rest}
+      className={`message-body ${className}`}
+      {...props}
     >
       {children}
     </div>
   );
 };
 
-export default MessageBody;
+export default withBulmaProps(MessageBody);

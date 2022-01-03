@@ -1,29 +1,20 @@
 import React from "react";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
+import withBulmaProps from "../bulma";
 
-import { MessageHeaderProps } from "./Message.types";
-
-const MessageHeader: React.FC<MessageHeaderProps> = ({
+const MessageHeader: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
   children,
+  className,
   ...props
 }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"div">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
-  const classNames = foldClassNames([className ?? "", helpers]);
-
   return (
     <div
       data-testid="MessageHeader"
-      className={`message-header ${classNames}`}
-      {...rest}
+      className={`message-header ${className}`}
+      {...props}
     >
       {children}
     </div>
   );
 };
 
-export default MessageHeader;
+export default withBulmaProps(MessageHeader);
