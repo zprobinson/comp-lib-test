@@ -1,11 +1,12 @@
 import React from "react";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
+import withBulmaProps from "../bulma";
+import { foldClassNames } from "../utilities/listUtils";
 
-import { ButtonProps } from "./Button.types";
+import { InnerButtonProps } from "./Button.types";
 
-const Button: React.FC<ButtonProps> = ({
+const Button: React.FC<InnerButtonProps> = ({
   children,
+  className,
   onClick,
   color,
   size,
@@ -14,21 +15,13 @@ const Button: React.FC<ButtonProps> = ({
   isLoading = false,
   ...props
 }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"button">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
-  const modifierClass = foldClassNames(modifiers);
-  const loadingClass = isLoading ? "is-loading" : "";
   const classNames = foldClassNames([
     className ?? "",
     color ?? "",
     size ?? "",
     state ?? "",
-    modifierClass,
-    loadingClass,
-    helpers,
+    foldClassNames(modifiers),
+    isLoading ? "is-loading" : "",
   ]);
 
   return (
@@ -36,11 +29,11 @@ const Button: React.FC<ButtonProps> = ({
       data-testid="Button"
       onClick={onClick}
       className={`button ${classNames}`}
-      {...rest}
+      {...props}
     >
       {children}
     </button>
   );
 };
 
-export default Button;
+export default withBulmaProps(Button);
