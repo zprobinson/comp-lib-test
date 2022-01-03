@@ -1,8 +1,8 @@
 import React from "react";
-import { strValueOr } from "../utilities/functionalUtils";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-import { ColumnsGap, ColumnsProps, OneOrMore } from "./Columns.types";
+import withBulmaProps from "../bulma";
+import { OneOrMore } from "../types";
+import { foldClassNames } from "../utilities/listUtils";
+import { ColumnsGap, InnerColumnsProps } from "./Columns.types";
 
 const getGapClass: (gap: OneOrMore<ColumnsGap> | undefined) => string = (gap) =>
   gap != null
@@ -11,34 +11,26 @@ const getGapClass: (gap: OneOrMore<ColumnsGap> | undefined) => string = (gap) =>
       : `is-variable ${foldClassNames(gap)}`
     : "";
 
-const Columns: React.FC<ColumnsProps> = ({
+const Columns: React.FC<InnerColumnsProps> = ({
   children,
+  className,
   gap,
   responsive,
   options,
   ...props
 }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"div">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const gapClass = getGapClass(gap);
-  const responsiveClass = strValueOr(responsive);
-  const optionsClass = foldClassNames(options || "");
-  const helpers = foldHelpers(bulmaProps);
   const classNames = foldClassNames([
     className ?? "",
-    gapClass,
-    responsiveClass,
-    optionsClass,
-    helpers,
+    responsive ?? "",
+    getGapClass(gap),
+    foldClassNames(options),
   ]);
 
   return (
-    <div data-testid="Columns" className={`columns ${classNames}`} {...rest}>
+    <div data-testid="Columns" className={`columns ${classNames}`} {...props}>
       {children}
     </div>
   );
 };
 
-export default Columns;
+export default withBulmaProps(Columns);

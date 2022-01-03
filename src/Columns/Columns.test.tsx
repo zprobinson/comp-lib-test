@@ -1,4 +1,3 @@
-// Generated with util/create-component.js
 import React from "react";
 import { render } from "@testing-library/react";
 
@@ -11,7 +10,11 @@ describe("Columns Component", () => {
 
   it("should render foo text correctly", () => {
     const expected = "harvey was here";
-    const { getByTestId } = renderComponent({ children: expected });
+    const { getByTestId } = renderComponent({
+      children: expected,
+      gap: ["is-7-mobile", "is-8-widescreen"],
+      textColor: "has-text-black",
+    });
 
     const component = getByTestId("Columns");
 
