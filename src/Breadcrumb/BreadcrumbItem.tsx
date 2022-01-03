@@ -1,30 +1,25 @@
 import React from "react";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-import { foldHelpers, foldClassNames } from "../utilities/listUtils";
+import withBulmaProps from "../bulma";
+import { foldClassNames } from "../utilities/listUtils";
 
-import { BreadcrumbItemProps } from "./Breadcrumb.types";
+import { InnerBreadcrumbItemProps } from "./Breadcrumb.types";
 
-const BreadcrumbItem: React.FC<BreadcrumbItemProps> = ({
+const BreadcrumbItem: React.FC<InnerBreadcrumbItemProps> = ({
   children,
+  className,
   isActive = false,
   ...props
 }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"li">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
   const classNames = foldClassNames([
     className ?? "",
     isActive ? "is-active" : "",
-    helpers,
   ]);
 
   return (
-    <li data-testid="BreadcrumbItem" className={classNames} {...rest}>
+    <li data-testid="BreadcrumbItem" className={classNames} {...props}>
       {children}
     </li>
   );
 };
 
-export default BreadcrumbItem;
+export default withBulmaProps(BreadcrumbItem);

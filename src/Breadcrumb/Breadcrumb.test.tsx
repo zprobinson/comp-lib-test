@@ -24,7 +24,11 @@ describe("Breadcrumb Component", () => {
 
     it("should render children correctly", () => {
       const expected = "harvey was here";
-      const { getByTestId } = renderComponent({ children: expected });
+      const { getByTestId } = renderComponent({
+        children: expected,
+        className: "foo-bar",
+        isActive: true,
+      });
 
       const component = getByTestId("BreadcrumbItem");
 

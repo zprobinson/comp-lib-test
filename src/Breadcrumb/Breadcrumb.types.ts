@@ -1,6 +1,14 @@
-import { Has } from "./../types/utility";
-import { Is, Size } from "..";
-import { BulmaComponentPropsWithoutRef } from "./../types/component";
+import { WithoutHelpers } from "./../types/component";
+import {
+  Size,
+  BulmaHelpers,
+  BulmaComponentPropsWithoutRef,
+  Has,
+  Is,
+} from "../types";
+
+export type InnerBreadcrumbProps = WithoutHelpers<BreadcrumbProps>;
+export type InnerBreadcrumbItemProps = WithoutHelpers<BreadcrumbItemProps>;
 
 export type BreadcrumbProps = BulmaComponentPropsWithoutRef<"nav"> & {
   alignment?: BreadcrumbAlignmentOption;
