@@ -1,22 +1,16 @@
 import React from "react";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
+import withBulmaProps from "../bulma";
 
-import { MenuListProps } from "./Menu.types";
-
-const MenuList: React.FC<MenuListProps> = ({ children, ...props }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"ul">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
-  const classNames = foldClassNames([className ?? "", helpers]);
-
+const MenuList: React.FC<React.ComponentPropsWithoutRef<"ul">> = ({
+  children,
+  className,
+  ...props
+}) => {
   return (
-    <ul data-testid="MenuList" className={`menu-list ${classNames}`} {...rest}>
+    <ul data-testid="MenuList" className={`menu-list ${className}`} {...props}>
       {children}
     </ul>
   );
 };
 
-export default MenuList;
+export default withBulmaProps(MenuList);

@@ -1,8 +1,8 @@
 import React from "react";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
+import withBulmaProps from "../bulma";
+import { foldClassNames } from "../utilities/listUtils";
 
-import { MenuLinkProps } from "./Menu.types";
+import { InnerMenuLinkProps } from "./Menu.types";
 
 /**
  * For _\<Menu\>_ to work appropriately, the _\<MenuLink\>_ should be a child of an _\<li\>_ tag which is itself a child of the _\<MenuList\>_ component.\
@@ -12,27 +12,22 @@ import { MenuLinkProps } from "./Menu.types";
  * This component should be saved solely for those rare circumstances. Use the _\<MenuListItem\>_ if the finer control is not needed.
  * @see {@link [Bulma Menu Documentation](https//bulma.io/documentation/components/menu)}
  */
-const MenuLink: React.FC<MenuLinkProps> = ({
+const MenuLink: React.FC<InnerMenuLinkProps> = ({
   children,
+  className,
   isActive = false,
   ...props
 }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"a">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
   const classNames = foldClassNames([
     className ?? "",
     isActive ? "is-active" : "",
-    helpers,
   ]);
 
   return (
-    <a data-testid="MenuLink" className={classNames} {...rest}>
+    <a data-testid="MenuLink" className={classNames} {...props}>
       {children}
     </a>
   );
 };
 
-export default MenuLink;
+export default withBulmaProps(MenuLink);
