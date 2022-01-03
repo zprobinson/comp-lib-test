@@ -1,29 +1,20 @@
 import React from "react";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
+import withBulmaProps from "../bulma";
 
-import { ModalCardFooterProps } from "./Modal.types";
-
-const ModalCardFooter: React.FC<ModalCardFooterProps> = ({
+const ModalCardFooter: React.FC<React.ComponentPropsWithoutRef<"footer">> = ({
   children,
+  className,
   ...props
 }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"footer">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
-  const classNames = foldClassNames([className ?? "", helpers]);
-
   return (
     <footer
       data-testid="ModalCardFooter"
-      className={`modal-card-foot ${classNames}`}
-      {...rest}
+      className={`modal-card-foot ${className}`}
+      {...props}
     >
       {children}
     </footer>
   );
 };
 
-export default ModalCardFooter;
+export default withBulmaProps(ModalCardFooter);

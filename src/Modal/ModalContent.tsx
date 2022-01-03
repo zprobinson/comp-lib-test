@@ -1,26 +1,20 @@
 import React from "react";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
+import withBulmaProps from "../bulma";
 
-import { ModalContentProps } from "./Modal.types";
-
-const ModalContent: React.FC<ModalContentProps> = ({ children, ...props }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"div">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
-  const classNames = foldClassNames([className ?? "", helpers]);
-
+const ModalContent: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
+  children,
+  className,
+  ...props
+}) => {
   return (
     <div
       data-testid="ModalContent"
-      className={`modal-content ${classNames}`}
-      {...rest}
+      className={`modal-content ${className}`}
+      {...props}
     >
       {children}
     </div>
   );
 };
 
-export default ModalContent;
+export default withBulmaProps(ModalContent);

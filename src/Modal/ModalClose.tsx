@@ -1,27 +1,23 @@
 import React from "react";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
+import withBulmaProps from "../bulma";
+import { foldClassNames } from "../utilities/listUtils";
 
-import { ModalCloseProps } from "./Modal.types";
+import { InnerModalCloseProps } from "./Modal.types";
 
-const ModalClose: React.VFC<ModalCloseProps> = ({
+const ModalClose: React.VFC<InnerModalCloseProps> = ({
+  className,
   size = "is-large",
   ...props
 }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"button">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
-  const classNames = foldClassNames([className ?? "", size, helpers]);
+  const classNames = foldClassNames([className ?? "", size]);
 
   return (
     <button
       data-testid="ModalClose"
       className={`modal-close ${classNames}`}
-      {...rest}
+      {...props}
     ></button>
   );
 };
 
-export default ModalClose;
+export default withBulmaProps(ModalClose);
