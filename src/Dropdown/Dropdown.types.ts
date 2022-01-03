@@ -1,4 +1,8 @@
-import { BulmaComponentPropsWithoutRef } from "./../types/component";
+import { BulmaComponentPropsWithoutRef, WithoutHelpers } from "./../types/component";
+
+export type InnerDropdownProps = WithoutHelpers<DropdownProps>;
+export type InnerDropdownAnchorProps = WithoutHelpers<DropdownAnchorProps>;
+export type InnerDropdownDivProps = WithoutHelpers<DropdownDivProps>;
 
 export type DropdownProps = BulmaComponentPropsWithoutRef<"div"> & {
   isActive?: boolean;

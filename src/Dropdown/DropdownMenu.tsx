@@ -1,27 +1,21 @@
 import React from "react";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
+import withBulmaProps from "../bulma";
 
-import { DropdownMenuProps } from "./Dropdown.types";
-
-const DropdownMenu: React.FC<DropdownMenuProps> = ({ children, ...props }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"div">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
-  const classNames = foldClassNames([className ?? "", helpers]);
-
+const DropdownMenu: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
+  children,
+  className,
+  ...props
+}) => {
   return (
     <div
       data-testid="DropdownMenu"
-      className={`dropdown-menu ${classNames}`}
+      className={`dropdown-menu ${className}`}
       role="menu"
-      {...rest}
+      {...props}
     >
       {children}
     </div>
   );
 };
 
-export default DropdownMenu;
+export default withBulmaProps(DropdownMenu);

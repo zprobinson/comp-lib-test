@@ -1,18 +1,11 @@
 import React from "react";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
+import withBulmaProps from "../bulma";
 
-import { DropdownDividerProps } from "./Dropdown.types";
-
-const DropdownDivider: React.VFC<DropdownDividerProps> = ({ ...props }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"hr">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
-  const classNames = foldClassNames([className ?? "", helpers]);
-
-  return <hr className={`dropdown-divider ${classNames}`} {...rest} />;
+const DropdownDivider: React.VFC<React.ComponentPropsWithoutRef<"hr">> = ({
+  className,
+  ...props
+}) => {
+  return <hr className={`dropdown-divider ${className}`} {...props} />;
 };
 
-export default DropdownDivider;
+export default withBulmaProps(DropdownDivider);

@@ -1,23 +1,18 @@
 import React from "react";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
+import withBulmaProps from "../bulma";
+import { foldClassNames } from "../utilities/listUtils";
 
-import { DropdownDivProps } from "./Dropdown.types";
+import { InnerDropdownDivProps } from "./Dropdown.types";
 
-const DropdownDiv: React.FC<DropdownDivProps> = ({
+const DropdownDiv: React.FC<InnerDropdownDivProps> = ({
   children,
+  className,
   isActive = false,
   ...props
 }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"div">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
   const classNames = foldClassNames([
     className ?? "",
     isActive ? "is-active" : "",
-    helpers,
   ]);
 
   return (
@@ -31,4 +26,4 @@ const DropdownDiv: React.FC<DropdownDivProps> = ({
   );
 };
 
-export default DropdownDiv;
+export default withBulmaProps(DropdownDiv);

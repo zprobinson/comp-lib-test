@@ -1,29 +1,20 @@
 import React from "react";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
+import withBulmaProps from "../bulma";
 
-import { DropdownTriggerProps } from "./Dropdown.types";
-
-const DropdownTrigger: React.FC<DropdownTriggerProps> = ({
+const DropdownTrigger: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
   children,
+  className,
   ...props
 }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"div">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
-  const classNames = foldClassNames([className ?? "", helpers]);
-
   return (
     <div
       data-testid="DropdownTrigger"
-      className={`dropdown-trigger ${classNames}`}
-      {...rest}
+      className={`dropdown-trigger ${className}`}
+      {...props}
     >
       {children}
     </div>
   );
 };
 
-export default DropdownTrigger;
+export default withBulmaProps(DropdownTrigger);

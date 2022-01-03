@@ -1,34 +1,29 @@
 import React from "react";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
+import withBulmaProps from "../bulma";
+import { foldClassNames } from "../utilities/listUtils";
 
-import { DropdownAnchorProps } from "./Dropdown.types";
+import { InnerDropdownAnchorProps } from "./Dropdown.types";
 
-const DropdownAnchor: React.FC<DropdownAnchorProps> = ({
+const DropdownAnchor: React.FC<InnerDropdownAnchorProps> = ({
   children,
+  className,
   isActive = false,
   ...props
 }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"a">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
   const classNames = foldClassNames([
     className ?? "",
     isActive ? "is-active" : "",
-    helpers,
   ]);
 
   return (
     <a
       data-testid="DropdownAnchor"
       className={`dropdown-item ${classNames}`}
-      {...rest}
+      {...props}
     >
       {children}
     </a>
   );
 };
 
-export default DropdownAnchor;
+export default withBulmaProps(DropdownAnchor);

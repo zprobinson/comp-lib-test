@@ -1,34 +1,29 @@
 import React from "react";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
+import withBulmaProps from "../bulma";
+import { foldClassNames } from "../utilities/listUtils";
 
-import { DropdownProps } from "./Dropdown.types";
+import { InnerDropdownProps } from "./Dropdown.types";
 
-const Dropdown: React.FC<DropdownProps> = ({
+const Dropdown: React.FC<InnerDropdownProps> = ({
   children,
+  className,
   isActive = false,
   isHoverable = false,
   isRightAligned = false,
   ...props
 }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"div">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
   const classNames = foldClassNames([
     className ?? "",
     isActive ? "is-active" : "",
     isHoverable ? "is-hoverable" : "",
     isRightAligned ? "is-right" : "",
-    helpers,
   ]);
 
   return (
-    <div data-testid="Dropdown" className={`dropdown ${classNames}`} {...rest}>
+    <div data-testid="Dropdown" className={`dropdown ${classNames}`} {...props}>
       {children}
     </div>
   );
 };
 
-export default Dropdown;
+export default withBulmaProps(Dropdown);
