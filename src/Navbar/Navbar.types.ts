@@ -1,3 +1,4 @@
+import { WithoutHelpers } from "./../types/component";
 import {
   BulmaComponentPropsWithoutRef,
   Is,
@@ -5,6 +6,14 @@ import {
   PrimaryColor,
   SecondaryColor,
 } from "..";
+
+export type InnerNavbarProps = WithoutHelpers<NavbarProps>;
+export type InnerNavbarBurgerProps = WithoutHelpers<NavbarBurgerProps>;
+export type InnerNavbarMenuProps = WithoutHelpers<NavbarMenuProps>;
+export type InnerNavbarItemAnchorProps = WithoutHelpers<NavbarItemAnchorProps>;
+export type InnerNavbarItemDivProps = WithoutHelpers<NavbarItemDivProps>;
+export type InnerNavbarLinkProps = WithoutHelpers<NavbarLinkProps>;
+export type InnerNavbarDropdownProps = WithoutHelpers<NavbarDropdownProps>;
 
 type NavbarColor = PrimaryColor | SecondaryColor;
 

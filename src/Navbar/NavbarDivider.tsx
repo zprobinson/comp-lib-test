@@ -1,24 +1,17 @@
 import React from "react";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
+import withBulmaProps from "../bulma";
 
-import { NavbarDividerProps } from "./Navbar.types";
-
-const NavbarDivider: React.VFC<NavbarDividerProps> = ({ ...props }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"hr">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
-  const classNames = foldClassNames([className ?? "", helpers]);
-
+const NavbarDivider: React.VFC<React.ComponentPropsWithoutRef<"hr">> = ({
+  className,
+  ...props
+}) => {
   return (
     <hr
       data-testid="NavbarDivider"
-      className={`navbar-divider ${classNames}`}
-      {...rest}
+      className={`navbar-divider ${className}`}
+      {...props}
     />
   );
 };
 
-export default NavbarDivider;
+export default withBulmaProps(NavbarDivider);

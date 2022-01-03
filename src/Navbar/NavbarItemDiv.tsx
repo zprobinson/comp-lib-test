@@ -1,11 +1,12 @@
 import React from "react";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
+import withBulmaProps from "../bulma";
+import { foldClassNames } from "../utilities/listUtils";
 
-import { NavbarItemDivProps } from "./Navbar.types";
+import { InnerNavbarItemDivProps } from "./Navbar.types";
 
-const NavbarItemDiv: React.FC<NavbarItemDivProps> = ({
+const NavbarItemDiv: React.FC<InnerNavbarItemDivProps> = ({
   children,
+  className,
   isActive = false,
   hasDropdown = false,
   hasDropdownUp = false,
@@ -14,11 +15,6 @@ const NavbarItemDiv: React.FC<NavbarItemDivProps> = ({
   isTab = false,
   ...props
 }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"div">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
   const dropdownClassName = hasDropdown
     ? foldClassNames([
         "has-dropdown",
@@ -32,18 +28,17 @@ const NavbarItemDiv: React.FC<NavbarItemDivProps> = ({
     dropdownClassName,
     isExpanded ? "is-expanded" : "",
     isTab ? "is-tab" : "",
-    helpers,
   ]);
 
   return (
     <div
       data-testid="NavbarItemDiv"
       className={`navbar-item ${classNames}`}
-      {...rest}
+      {...props}
     >
       {children}
     </div>
   );
 };
 
-export default NavbarItemDiv;
+export default withBulmaProps(NavbarItemDiv);

@@ -1,34 +1,29 @@
 import React from "react";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
+import withBulmaProps from "../bulma";
+import { foldClassNames } from "../utilities/listUtils";
 
-import { NavbarMenuProps } from "./Navbar.types";
+import { InnerNavbarMenuProps } from "./Navbar.types";
 
-const NavbarMenu: React.FC<NavbarMenuProps> = ({
+const NavbarMenu: React.FC<InnerNavbarMenuProps> = ({
   children,
+  className,
   isActive = false,
   ...props
 }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"div">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
   const classNames = foldClassNames([
     className ?? "",
     isActive ? "is-active" : "",
-    helpers,
   ]);
 
   return (
     <div
       data-testid="NavbarMenu"
       className={`navbar-menu ${classNames}`}
-      {...rest}
+      {...props}
     >
       {children}
     </div>
   );
 };
 
-export default NavbarMenu;
+export default withBulmaProps(NavbarMenu);

@@ -10,7 +10,6 @@ import NavbarLink from "./NavbarLink";
 import NavbarMenu from "./NavbarMenu";
 import NavbarMenuStart from "./NavbarMenuStart";
 import NavbarMenuEnd from "./NavbarMenuEnd";
-import NavbarItemCustom from "./NavbarItemCustom";
 import {
   NavbarProps,
   NavbarBrandProps,
@@ -143,21 +142,6 @@ describe("Navbar Menu End Component", () => {
     const { getByTestId } = renderComponent({ children: expected });
 
     const component = getByTestId("NavbarMenuEnd");
-
-    expect(component).toHaveTextContent(expected);
-  });
-});
-
-describe("Navbar Item Custom Component", () => {
-  const CustomComponent = NavbarItemCustom(NavbarLink);
-  const renderComponent = (props: NavbarLinkProps) =>
-    render(<CustomComponent {...props} />);
-
-  it("should render children correctly", () => {
-    const expected = "harvey was here";
-    const { getByTestId } = renderComponent({ children: expected });
-
-    const component = getByTestId("NavbarItemCustom");
 
     expect(component).toHaveTextContent(expected);
   });

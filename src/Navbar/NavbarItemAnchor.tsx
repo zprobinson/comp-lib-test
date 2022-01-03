@@ -1,38 +1,33 @@
 import React from "react";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
+import withBulmaProps from "../bulma";
+import { foldClassNames } from "../utilities/listUtils";
 
-import { NavbarItemAnchorProps } from "./Navbar.types";
+import { InnerNavbarItemAnchorProps } from "./Navbar.types";
 
-const NavbarItemAnchor: React.FC<NavbarItemAnchorProps> = ({
+const NavbarItemAnchor: React.FC<InnerNavbarItemAnchorProps> = ({
   children,
+  className,
   isActive = false,
   isExpanded = false,
   isTab = false,
   ...props
 }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"a">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
   const classNames = foldClassNames([
     className ?? "",
     isActive ? "is-active" : "",
     isExpanded ? "is-expanded" : "",
     isTab ? "is-tab" : "",
-    helpers,
   ]);
 
   return (
     <a
       data-testid="NavbarItemAnchor"
       className={`navbar-item ${classNames}`}
-      {...rest}
+      {...props}
     >
       {children}
     </a>
   );
 };
 
-export default NavbarItemAnchor;
+export default withBulmaProps(NavbarItemAnchor);

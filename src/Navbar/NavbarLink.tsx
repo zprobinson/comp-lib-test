@@ -1,34 +1,29 @@
 import React from "react";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
+import withBulmaProps from "../bulma";
+import { foldClassNames } from "../utilities/listUtils";
 
-import { NavbarLinkProps } from "./Navbar.types";
+import { InnerNavbarLinkProps } from "./Navbar.types";
 
-const NavbarLink: React.FC<NavbarLinkProps> = ({
+const NavbarLink: React.FC<InnerNavbarLinkProps> = ({
   children,
+  className,
   isArrowless = false,
   ...props
 }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"a">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
   const classNames = foldClassNames([
     className ?? "",
     isArrowless ? "is-arrowless" : "",
-    helpers,
   ]);
 
   return (
     <a
       data-testid="NavbarLink"
       className={`navbar-link ${classNames}`}
-      {...rest}
+      {...props}
     >
       {children}
     </a>
   );
 };
 
-export default NavbarLink;
+export default withBulmaProps(NavbarLink);

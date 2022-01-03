@@ -1,26 +1,20 @@
 import React from "react";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
+import withBulmaProps from "../bulma";
 
-import { NavbarBrandProps } from "./Navbar.types";
-
-const NavbarBrand: React.FC<NavbarBrandProps> = ({ children, ...props }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"div">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
-  const classNames = foldClassNames([className ?? "", helpers]);
-
+const NavbarBrand: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
+  children,
+  className,
+  ...props
+}) => {
   return (
     <div
       data-testid="NavbarBrand"
-      className={`navbar-brand ${classNames}`}
-      {...rest}
+      className={`navbar-brand ${className}`}
+      {...props}
     >
       {children}
     </div>
   );
 };
 
-export default NavbarBrand;
+export default withBulmaProps(NavbarBrand);

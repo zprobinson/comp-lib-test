@@ -9,7 +9,6 @@ export { default as NavbarLink } from "./NavbarLink";
 export { default as NavbarMenu } from "./NavbarMenu";
 export { default as NavbarMenuEnd } from "./NavbarMenuEnd";
 export { default as NavbarMenuStart } from "./NavbarMenuStart";
-export { default as NavbarItemCustom } from "./NavbarItemCustom";
 export {
   NavbarProps,
   NavbarBrandProps,
