@@ -1,10 +1,13 @@
 import {
   BulmaComponentPropsWithoutRef,
+  WithoutHelpers,
   Is,
   PrimaryColor,
   SecondaryColor,
   Size,
-} from "..";
+} from "../types";
+
+export type InnerProgressBarProps = WithoutHelpers<ProgressBarProps>;
 
 export type ProgressBarProps = BulmaComponentPropsWithoutRef<"progress"> & {
   color?: ProgressBarColor;
