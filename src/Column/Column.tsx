@@ -1,36 +1,28 @@
 import React from "react";
-import { foldHelpers, foldClassNames } from "../utilities/listUtils";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
-import { ColumnProps } from "./Column.types";
+import withBulmaProps from "../bulma";
+import { foldClassNames } from "../utilities/listUtils";
+import { InnerColumnProps } from "./Column.types";
 
-const Column: React.FC<ColumnProps> = ({
+const Column: React.FC<InnerColumnProps> = ({
   children,
+  className,
   columnSize,
   offset,
   narrow,
   ...props
 }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"div">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const sizeClass = foldClassNames(columnSize || "");
-  const offsetClass = foldClassNames(offset || "");
-  const narrowClass = foldClassNames(narrow || "");
-  const helpers = foldHelpers(bulmaProps);
   const classNames = foldClassNames([
     className ?? "",
-    sizeClass,
-    offsetClass,
-    narrowClass,
-    helpers,
+    foldClassNames(columnSize ?? ""),
+    foldClassNames(offset ?? ""),
+    foldClassNames(narrow ?? ""),
   ]);
 
   return (
-    <div data-testid="Column" className={`column ${classNames}`} {...rest}>
+    <div data-testid="Column" className={`column ${classNames}`} {...props}>
       {children}
     </div>
   );
 };
 
-export default Column;
+export default withBulmaProps(Column);
