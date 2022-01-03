@@ -1,10 +1,13 @@
+import { DeleteProps } from "../Delete";
 import {
   BulmaComponentPropsWithoutRef,
-  DeleteProps,
   Is,
   PrimaryColor,
   SecondaryColor,
-} from "..";
+  WithoutHelpers,
+} from "../types";
+
+export type InnerNotificationProps = WithoutHelpers<NotificationProps>;
 
 export type NotificationProps = BulmaComponentPropsWithoutRef<"div"> & {
   onClose: () => void;
