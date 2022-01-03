@@ -16,6 +16,33 @@ describe("Title", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  it("should render as h3 tag by default", () => {
+    const expected = "3";
+    const { getByRole } = renderComponent({});
+
+    const component = getByRole("heading", { level: 3 });
+
+    expect(component).toBeInTheDocument();
+  });
+
+  it("should render as h1 tag", () => {
+    const expected = "1";
+    const { getByRole } = renderComponent({ size: expected });
+
+    const component = getByRole("heading", { level: 1 });
+
+    expect(component).toBeInTheDocument();
+  });
+
+  it("should render as h5 tag", () => {
+    const expected = "5";
+    const { getByRole } = renderComponent({ size: expected });
+
+    const component = getByRole("heading", { level: 5 });
+
+    expect(component).toBeInTheDocument();
+  });
 });
 
 describe("Subitle", () => {
@@ -29,5 +56,32 @@ describe("Subitle", () => {
     const component = getByTestId("Subtitle");
 
     expect(component).toHaveTextContent(expected);
+  });
+
+  it("should render as h3 tag by default", () => {
+    const expected = "3";
+    const { getByRole } = renderComponent({});
+
+    const component = getByRole("heading", { level: 3 });
+
+    expect(component).toBeInTheDocument();
+  });
+
+  it("should render as h1 tag", () => {
+    const expected = "1";
+    const { getByRole } = renderComponent({ size: expected });
+
+    const component = getByRole("heading", { level: 1 });
+
+    expect(component).toBeInTheDocument();
+  });
+
+  it("should render as h5 tag", () => {
+    const expected = "5";
+    const { getByRole } = renderComponent({ size: expected });
+
+    const component = getByRole("heading", { level: 5 });
+
+    expect(component).toBeInTheDocument();
   });
 });

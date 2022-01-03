@@ -1,20 +1,16 @@
 import React from "react";
-import { foldHelpers, foldClassNames } from "../utilities/listUtils";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
+import withBulmaProps from "../bulma";
+import { foldClassNames } from "../utilities/listUtils";
 
-import { DynamicHeadingElement, SubtitleProps } from "./Title.types";
+import { DynamicHeadingElement, InnerSubtitleProps } from "./Title.types";
 
-const Subtitle: React.FC<SubtitleProps> = ({
+const Subtitle: React.FC<InnerSubtitleProps> = ({
   children,
+  className,
   size = "3",
   ...props
 }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"h1">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
-  const classNames = foldClassNames([className ?? "", `is-${size}`, helpers]);
+  const classNames = foldClassNames([className ?? "", `is-${size}`]);
 
   const RenderAs = `h${size}` as DynamicHeadingElement;
 
@@ -22,11 +18,11 @@ const Subtitle: React.FC<SubtitleProps> = ({
     <RenderAs
       data-testid="Subtitle"
       className={`subtitle ${classNames}`}
-      {...rest}
+      {...props}
     >
       {children}
     </RenderAs>
   );
 };
 
-export default Subtitle;
+export default withBulmaProps(Subtitle);

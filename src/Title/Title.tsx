@@ -1,34 +1,29 @@
 import React from "react";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
+import withBulmaProps from "../bulma";
+import { foldClassNames } from "../utilities/listUtils";
 
-import { DynamicHeadingElement, TitleProps } from "./Title.types";
+import { DynamicHeadingElement, InnerTitleProps } from "./Title.types";
 
-const Title: React.FC<TitleProps> = ({
+const Title: React.FC<InnerTitleProps> = ({
   children,
+  className,
   size = "3",
   isSpaced = false,
   ...props
-}: TitleProps) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"h1">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
+}) => {
   const classNames = foldClassNames([
     className ?? "",
     `is-${size}`,
     isSpaced ? "is-spaced" : "",
-    helpers,
   ]);
 
   const RenderAs = `h${size}` as DynamicHeadingElement;
 
   return (
-    <RenderAs data-testid="Title" className={`title ${classNames}`} {...rest}>
+    <RenderAs data-testid="Title" className={`title ${classNames}`} {...props}>
       {children}
     </RenderAs>
   );
 };
 
-export default Title;
+export default withBulmaProps(Title);

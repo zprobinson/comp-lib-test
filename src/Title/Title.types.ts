@@ -1,4 +1,7 @@
-import { BulmaComponentPropsWithoutRef } from "..";
+import { BulmaComponentPropsWithoutRef, WithoutHelpers } from "../types";
+
+export type InnerTitleProps = WithoutHelpers<TitleProps>;
+export type InnerSubtitleProps = WithoutHelpers<SubtitleProps>;
 
 export type TitleProps = BulmaComponentPropsWithoutRef<"h1"> & {
   size?: TitleSize;
