@@ -1,21 +1,22 @@
 import React from "react";
-import { foldClassNames, foldHelpers } from "../utilities/listUtils";
-import { partitionBulmaComponentProps } from "../utilities/propUtilities";
+import withBulmaProps from "../bulma";
+import { foldClassNames } from "../utilities/listUtils";
 
-import { ContentProps } from "./Content.types";
+import { InnerContentProps } from "./Content.types";
 
-const Content: React.FC<ContentProps> = ({ children, size, ...props }) => {
-  const { bulmaProps, componentProps } = partitionBulmaComponentProps<"div">(
-    props
-  );
-  const { className, ...rest } = componentProps;
-  const helpers = foldHelpers(bulmaProps);
-  const classNames = foldClassNames([className ?? "", size ?? "", helpers]);
+const Content: React.FC<InnerContentProps> = ({
+  children,
+  className,
+  size,
+  ...props
+}) => {
+  const classNames = foldClassNames([className ?? "", size ?? ""]);
+
   return (
-    <div data-testid="Content" className={`content ${classNames}`} {...rest}>
+    <div data-testid="Content" className={`content ${classNames}`} {...props}>
       {children}
     </div>
   );
 };
 
-export default Content;
+export default withBulmaProps(Content);
