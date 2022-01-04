@@ -1,10 +1,9 @@
 import React from "react";
 import withBulmaProps from "../bulma";
 
-const ModalBackground: React.VFC<React.ComponentPropsWithoutRef<"div">> = ({
-  className,
-  ...props
-}) => {
+const ModalBackground: React.VFC<
+  Omit<React.ComponentPropsWithoutRef<"div">, "children">
+> = ({ className, ...props }) => {
   return (
     <div
       data-testid="ModalBackground"

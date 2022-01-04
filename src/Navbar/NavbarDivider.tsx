@@ -1,10 +1,9 @@
 import React from "react";
 import withBulmaProps from "../bulma";
 
-const NavbarDivider: React.VFC<React.ComponentPropsWithoutRef<"hr">> = ({
-  className,
-  ...props
-}) => {
+const NavbarDivider: React.VFC<
+  Omit<React.ComponentPropsWithoutRef<"hr">, "children">
+> = ({ className, ...props }) => {
   return (
     <hr
       data-testid="NavbarDivider"

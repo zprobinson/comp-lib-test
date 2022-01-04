@@ -3,7 +3,7 @@ import withBulmaProps from "../bulma";
 
 import { InnerDeleteProps } from "./Delete.types";
 
-const Delete: React.VFC<InnerDeleteProps> = ({
+const Delete: React.VFC<Omit<InnerDeleteProps, "children">> = ({
   className,
   onClick,
   size,

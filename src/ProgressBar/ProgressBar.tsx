@@ -4,7 +4,7 @@ import { foldClassNames } from "../utilities/listUtils";
 
 import { InnerProgressBarProps } from "./ProgressBar.types";
 
-const ProgressBar: React.VFC<InnerProgressBarProps> = ({
+const ProgressBar: React.VFC<Omit<InnerProgressBarProps, "children">> = ({
   className,
   color,
   size,

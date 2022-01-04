@@ -4,7 +4,7 @@ import { foldClassNames } from "../utilities/listUtils";
 
 import { InnerNavbarBurgerProps } from "./Navbar.types";
 
-const NavbarBurger: React.VFC<InnerNavbarBurgerProps> = ({
+const NavbarBurger: React.VFC<Omit<InnerNavbarBurgerProps, "children">> = ({
   className,
   isActive = false,
   ...props

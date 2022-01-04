@@ -4,7 +4,7 @@ import { foldClassNames } from "../utilities/listUtils";
 
 import { InnerModalCloseProps } from "./Modal.types";
 
-const ModalClose: React.VFC<InnerModalCloseProps> = ({
+const ModalClose: React.VFC<Omit<InnerModalCloseProps, "children">> = ({
   className,
   size = "is-large",
   ...props
