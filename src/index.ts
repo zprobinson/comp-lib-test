@@ -21,5 +21,6 @@ export * from "./Modal";
 export * from "./Navbar";
 export * from "./Pagination";
 export * from "./Panel";
+export * from "./Tabs";
 export * from "./types";
 export * from "./bulma";
