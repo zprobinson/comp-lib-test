@@ -22,5 +22,6 @@ export * from "./Navbar";
 export * from "./Pagination";
 export * from "./Panel";
 export * from "./Tabs";
+export * from "./Container";
 export * from "./types";
 export * from "./bulma";
