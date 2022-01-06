@@ -7,16 +7,13 @@ type Test<TProps extends {} = {}> = TProps &
   BulmaHelpers &
   ({ className?: string } | {});
 
-const withBulmaPropsTest = <TProps extends {} = {}>(
+const withBulmaPropsTest = <TProps extends { className?: string } = {}>(
   WrappedComponent: React.ComponentType<TProps>
 ) => {
-  const ComponentWithBulmaProps = (props: any) => {
+  const ComponentWithBulmaProps = (props: TProps & BulmaHelpers) => {
     const { bulmaProps, componentProps } = partitionBulmaPropsG<TProps>(props);
     const helpers = foldHelpers(bulmaProps);
-    const classNames =
-      "className" in props
-        ? foldClassNames([props.className ?? "", helpers])
-        : helpers;
+    const classNames = foldClassNames([props.className ?? "", helpers]);
 
     console.log("props and classNames", props, classNames);
 
