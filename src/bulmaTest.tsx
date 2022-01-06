@@ -20,6 +20,15 @@ const withBulmaPropsTest = <TProps extends {} = {}>(
 
     console.log("props and classNames", props, classNames);
 
+    const test = (
+      <WrappedComponent
+        {...(componentProps as TProps)}
+        className={classNames}
+      />
+    );
+
+    console.log("the component", test);
+
     return (
       <WrappedComponent
         {...(componentProps as TProps)}
