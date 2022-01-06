@@ -23,5 +23,6 @@ export * from "./Pagination";
 export * from "./Panel";
 export * from "./Tabs";
 export * from "./Container";
+export * from "./Level";
 export * from "./types";
 export * from "./bulma";
