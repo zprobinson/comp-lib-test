@@ -10,7 +10,7 @@ type Test<TProps extends {} = {}> = TProps &
 const withBulmaPropsTest = <TProps extends {} = {}>(
   WrappedComponent: React.ComponentType<TProps>
 ) => {
-  const ComponentWithBulmaProps = (props: Test<TProps>) => {
+  const ComponentWithBulmaProps = (props: any) => {
     const { bulmaProps, componentProps } = partitionBulmaPropsG<TProps>(props);
     const helpers = foldHelpers(bulmaProps);
     const classNames =
