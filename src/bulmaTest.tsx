@@ -18,6 +18,8 @@ const withBulmaPropsTest = <TProps extends {} = {}>(
         ? foldClassNames([props.className ?? "", helpers])
         : helpers;
 
+    console.log("props and classNames", props, classNames);
+
     return (
       <WrappedComponent
         {...(componentProps as TProps)}
