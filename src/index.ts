@@ -25,4 +25,4 @@ export * from "./Tabs";
 export * from "./Container";
 export * from "./Level";
 export * from "./types";
-export * from "./bulma";
+export { default as withBulmaProps } from "./bulma";
