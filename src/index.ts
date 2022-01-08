@@ -16,6 +16,7 @@ export * from "./Table";
 export * from "./Message";
 export * from "./Card";
 export * from "./Dropdown";
+export * from "./MediaObject";
 export * from "./Menu";
 export * from "./Modal";
 export * from "./Navbar";
