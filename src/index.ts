@@ -27,6 +27,7 @@ export * from "./Tabs";
 export * from "./Container";
 export * from "./Level";
 export * from "./Section";
+export * from "./Footer";
 export * from "./types";
 export { default as withBulmaProps } from "./bulma";
 export { default as useBulmaProps } from "./useBulmaProps";
