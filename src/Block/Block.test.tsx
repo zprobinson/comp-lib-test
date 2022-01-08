@@ -3,6 +3,7 @@ import { render } from "@testing-library/react";
 
 import Block from "./Block";
 import { BlockProps } from "./Block.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests.test";
 
 describe("Block Component", () => {
   const renderComponent = (props: BlockProps) => render(<Block {...props} />);
@@ -15,4 +16,6 @@ describe("Block Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("Block", renderComponent);
 });
