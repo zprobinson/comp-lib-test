@@ -1,5 +1,5 @@
 import React from "react";
-import { withBulmaProps } from "..";
+import withBulmaProps from "../bulma";
 
 const HeroFooter: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
   className,
@@ -8,7 +8,7 @@ const HeroFooter: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
   return (
     <div
       data-testid="HeroFooter"
-      className={`hero-footer ${className}`}
+      className={`hero-foot ${className}`}
       {...props}
     ></div>
   );

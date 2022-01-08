@@ -1,5 +1,5 @@
 import React from "react";
-import { withBulmaProps } from "..";
+import withBulmaProps from "../bulma";
 import { foldClassNames } from "../utilities/listUtils";
 
 import { InnerHeroProps, __FULLHEIGHT_WITH_NAVBAR__ } from "./Hero.types";
@@ -20,9 +20,9 @@ const Hero: React.FC<InnerHeroProps> = ({
   ]);
 
   return (
-    <div data-testid="Hero" className={`hero ${classNames}`} {...props}>
+    <section data-testid="Hero" className={`hero ${classNames}`} {...props}>
       {children}
-    </div>
+    </section>
   );
 };
 

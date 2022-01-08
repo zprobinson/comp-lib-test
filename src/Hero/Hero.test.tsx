@@ -26,6 +26,15 @@ describe("Hero Component", () => {
     expect(component).toHaveTextContent(expected);
   });
 
+  it("should have hero class", () => {
+    const expected = "hero";
+    const { getByTestId } = renderComponent({ className: "foo-bar" });
+
+    const component = getByTestId("Hero");
+
+    expect(component).toHaveClass(expected);
+  });
+
   it("should have given color class", () => {
     const expected: HeroProps["color"] = "is-danger";
     const { getByTestId } = renderComponent({
@@ -79,6 +88,15 @@ describe("Hero Header Component", () => {
     expect(component).toHaveTextContent(expected);
   });
 
+  it("should have hero-head class", () => {
+    const expected = "hero-head";
+    const { getByTestId } = renderComponent({ className: "foo-bar" });
+
+    const component = getByTestId("HeroHeader");
+
+    expect(component).toHaveClass(expected);
+  });
+
   testBulmaProps("HeroHeader", renderComponent);
 });
 
@@ -95,6 +113,15 @@ describe("Hero Body Component", () => {
     expect(component).toHaveTextContent(expected);
   });
 
+  it("should have hero-body class", () => {
+    const expected = "hero-body";
+    const { getByTestId } = renderComponent({ className: "foo-bar" });
+
+    const component = getByTestId("HeroBody");
+
+    expect(component).toHaveClass(expected);
+  });
+
   testBulmaProps("HeroBody", renderComponent);
 });
 
@@ -109,6 +136,15 @@ describe("Hero Footer Component", () => {
     const component = getByTestId("HeroFooter");
 
     expect(component).toHaveTextContent(expected);
+  });
+
+  it("should have hero-foot class", () => {
+    const expected = "hero-foot";
+    const { getByTestId } = renderComponent({ className: "foo-bar" });
+
+    const component = getByTestId("HeroFooter");
+
+    expect(component).toHaveClass(expected);
   });
 
   testBulmaProps("HeroFooter", renderComponent);

@@ -1,5 +1,5 @@
 import React from "react";
-import { withBulmaProps } from "..";
+import withBulmaProps from "../bulma";
 
 const HeroBody: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
   className,
