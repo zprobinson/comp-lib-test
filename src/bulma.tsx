@@ -3,11 +3,16 @@ import { BulmaHelpers } from "./types";
 import { partitionBulmaPropsG } from "./utilities/propUtilities";
 import { foldClassNames, foldHelpers } from "./utilities/listUtils";
 
-const withBulmaProps = <TProps extends { className?: string } = {}>(
-  WrappedComponent: React.ComponentType<TProps>
+type ClassName = { className?: string };
+
+const withBulmaProps = <HigherOrderProps extends ClassName = ClassName>(
+  WrappedComponent: React.ComponentType<HigherOrderProps>
 ) => {
-  const ComponentWithBulmaProps = (
-    props: React.PropsWithChildren<TProps> & BulmaHelpers
+  const displayName =
+    WrappedComponent.displayName ?? WrappedComponent.name ?? "Component";
+
+  const ComponentWithBulmaProps = <TProps extends HigherOrderProps & BulmaHelpers>(
+    props: TProps
   ) => {
     const { bulmaProps, componentProps } = partitionBulmaPropsG<TProps>(props);
     const helpers = foldHelpers(bulmaProps);
@@ -20,6 +25,8 @@ const withBulmaProps = <TProps extends { className?: string } = {}>(
       />
     );
   };
+
+  ComponentWithBulmaProps.displayName = `withBulmaProps(${displayName})`;
 
   return ComponentWithBulmaProps;
 };
