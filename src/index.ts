@@ -26,4 +26,3 @@ export * from "./Container";
 export * from "./Level";
 export * from "./types";
 export { default as withBulmaProps } from "./bulma";
-export { default as withBulmaPropsTest } from "./bulmaTest";
