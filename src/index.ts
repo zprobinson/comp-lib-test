@@ -12,6 +12,7 @@ export * from "./ProgressBar";
 export * from "./Tag";
 export * from "./Title";
 export * from "./Breadcrumb";
+export * from "./Hero";
 export * from "./Table";
 export * from "./Message";
 export * from "./Card";
