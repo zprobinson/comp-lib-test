@@ -11,6 +11,7 @@ import {
   LevelRightProps,
   LevelItemProps,
 } from "./Level.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
 describe("Level Component", () => {
   const renderComponent = (props: LevelProps) => render(<Level {...props} />);
@@ -26,6 +27,8 @@ describe("Level Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("Level", renderComponent);
 });
 
 describe("Level Left Component", () => {
@@ -42,6 +45,8 @@ describe("Level Left Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("LevelLeft", renderComponent);
 });
 
 describe("Level Right Component", () => {
@@ -58,6 +63,8 @@ describe("Level Right Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("LevelRight", renderComponent);
 });
 
 describe("Level Item Component", () => {
@@ -74,4 +81,6 @@ describe("Level Item Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("LevelItem", renderComponent);
 });

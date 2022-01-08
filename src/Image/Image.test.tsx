@@ -3,6 +3,7 @@ import { render } from "@testing-library/react";
 
 import Image from "./Image";
 import { ImageProps } from "./Image.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
 describe("Image Component", () => {
   const renderComponent = (props: ImageProps) => render(<Image {...props} />);
@@ -18,4 +19,7 @@ describe("Image Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("Image", renderComponent);
+
 });

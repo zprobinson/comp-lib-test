@@ -3,6 +3,7 @@ import { render } from "@testing-library/react";
 
 import Columns from "./Columns";
 import { ColumnsProps } from "./Columns.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
 describe("Columns Component", () => {
   const renderComponent = (props: ColumnsProps) =>
@@ -20,4 +21,6 @@ describe("Columns Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("Columns", renderComponent);
 });

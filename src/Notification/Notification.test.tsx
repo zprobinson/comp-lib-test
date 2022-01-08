@@ -3,6 +3,7 @@ import { render, fireEvent } from "@testing-library/react";
 
 import Notification from "./Notification";
 import { NotificationProps } from "./Notification.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
 describe("Notification Component", () => {
   const renderComponent = (props: NotificationProps) =>
@@ -29,4 +30,6 @@ describe("Notification Component", () => {
 
     expect(onClick).toHaveBeenCalledTimes(1);
   });
+
+  testBulmaProps("Notification", renderComponent);
 });

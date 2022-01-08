@@ -4,6 +4,7 @@ import { render } from "@testing-library/react";
 import Icon from "./Icon";
 import IconText from "./IconText";
 import { IconProps, IconTextProps } from "./Icon.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
 describe("Icon Component", () => {
   const renderComponent = (props: IconProps) => render(<Icon {...props} />);
@@ -16,6 +17,8 @@ describe("Icon Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("Icon", renderComponent);
 });
 
 describe("Icon Test Component", () => {
@@ -42,4 +45,6 @@ describe("Icon Test Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("IconText", renderComponent);
 });

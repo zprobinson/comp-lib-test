@@ -21,6 +21,7 @@ import {
   NavbarMenuStartProps,
   NavbarMenuEndProps,
 } from "./Navbar.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
 describe("Navbar Component", () => {
   const renderComponent = (props: NavbarProps) => render(<Navbar {...props} />);
@@ -33,6 +34,8 @@ describe("Navbar Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("Navbar", renderComponent);
 });
 
 describe("Navbar Brand Component", () => {
@@ -47,6 +50,8 @@ describe("Navbar Brand Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("NavbarBrand", renderComponent);
 });
 
 describe("Navbar Burger Component", () => {
@@ -61,6 +66,8 @@ describe("Navbar Burger Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("NavbarDropdown", renderComponent);
 });
 
 describe("Navbar Item Anchor Component", () => {
@@ -75,6 +82,8 @@ describe("Navbar Item Anchor Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("NavbarItemAnchor", renderComponent);
 });
 
 describe("Navbar Item Div Component", () => {
@@ -89,6 +98,8 @@ describe("Navbar Item Div Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("NavbarItemDiv", renderComponent);
 });
 
 describe("Navbar Link Component", () => {
@@ -103,6 +114,8 @@ describe("Navbar Link Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("NavbarLink", renderComponent);
 });
 
 describe("Navbar Menu Component", () => {
@@ -117,6 +130,8 @@ describe("Navbar Menu Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("NavbarMenu", renderComponent);
 });
 
 describe("Navbar Menu Start Component", () => {
@@ -131,6 +146,8 @@ describe("Navbar Menu Start Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("NavbarMenuStart", renderComponent);
 });
 
 describe("Navbar Menu End Component", () => {
@@ -145,4 +162,6 @@ describe("Navbar Menu End Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("NavbarMenuEnd", renderComponent);
 });

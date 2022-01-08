@@ -4,6 +4,7 @@ import { render } from "@testing-library/react";
 import Breadcrumb from "./Breadcrumb";
 import BreadcrumbItem from "./BreadcrumbItem";
 import { BreadcrumbItemProps, BreadcrumbProps } from "./Breadcrumb.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
 describe("Breadcrumb Component", () => {
   const renderComponent = (props: BreadcrumbProps) =>
@@ -17,6 +18,8 @@ describe("Breadcrumb Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("Breadcrumb", renderComponent);
 
   describe("Breadcrumb Item Component", () => {
     const renderComponent = (props: BreadcrumbItemProps) =>
@@ -34,5 +37,7 @@ describe("Breadcrumb Component", () => {
 
       expect(component).toHaveTextContent(expected);
     });
+
+    testBulmaProps("BreadcrumbItem", renderComponent);
   });
 });

@@ -3,6 +3,7 @@ import { render, fireEvent } from "@testing-library/react";
 
 import Delete from "./Delete";
 import { DeleteProps } from "./Delete.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
 describe("Delete Component", () => {
   const renderComponent = (props: DeleteProps) => render(<Delete {...props} />);
@@ -16,4 +17,6 @@ describe("Delete Component", () => {
 
     expect(onClick).toHaveBeenCalledTimes(1);
   });
+
+  testBulmaProps("Delete", renderComponent);
 });

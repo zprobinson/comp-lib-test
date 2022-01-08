@@ -18,6 +18,7 @@ import {
   ModalCardHeaderProps,
   ModalCardTitleProps,
 } from "./Modal.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
 describe("Modal Component", () => {
   const renderComponent = (props: ModalProps) => render(<Modal {...props} />);
@@ -30,6 +31,8 @@ describe("Modal Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("Modal", renderComponent);
 });
 
 describe("Modal Content Component", () => {
@@ -44,6 +47,8 @@ describe("Modal Content Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("ModalContent", renderComponent);
 });
 
 describe("Modal Card Component", () => {
@@ -58,6 +63,8 @@ describe("Modal Card Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("ModalCard", renderComponent);
 });
 
 describe("Modal Card Body Component", () => {
@@ -72,6 +79,8 @@ describe("Modal Card Body Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("ModalCardBody", renderComponent);
 });
 
 describe("Modal Card Footer Component", () => {
@@ -86,6 +95,8 @@ describe("Modal Card Footer Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("ModalCardFooter", renderComponent);
 });
 
 describe("Modal Card Header Component", () => {
@@ -100,6 +111,8 @@ describe("Modal Card Header Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("ModalCardHeader", renderComponent);
 });
 
 describe("Modal Card Title Component", () => {
@@ -114,4 +127,6 @@ describe("Modal Card Title Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("ModalCardTitle", renderComponent);
 });

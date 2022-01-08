@@ -3,6 +3,7 @@ import { render } from "@testing-library/react";
 
 import Box from "./Box";
 import { BoxProps } from "./Box.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
 describe("Box Component", () => {
   const renderComponent = (props: BoxProps) => render(<Box {...props} />);
@@ -16,4 +17,6 @@ describe("Box Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("Box", renderComponent);
 });

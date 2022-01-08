@@ -9,6 +9,7 @@ import {
   MessageHeaderProps,
   MessageProps,
 } from "./Message.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
 describe("Message Component", () => {
   const renderComponent = (props: MessageProps) =>
@@ -23,6 +24,8 @@ describe("Message Component", () => {
     expect(component).toHaveTextContent(expected);
   });
 
+  testBulmaProps("Message", renderComponent);
+
   describe("Message Header Component", () => {
     const renderComponent = (props: MessageHeaderProps) =>
       render(<MessageHeader {...props} />);
@@ -35,6 +38,8 @@ describe("Message Component", () => {
 
       expect(component).toHaveTextContent(expected);
     });
+
+    testBulmaProps("MessageHeader", renderComponent);
   });
 
   describe("Message Body Component", () => {
@@ -49,5 +54,7 @@ describe("Message Component", () => {
 
       expect(component).toHaveTextContent(expected);
     });
+
+    testBulmaProps("MessageBody", renderComponent);
   });
 });

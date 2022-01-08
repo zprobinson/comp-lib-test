@@ -21,6 +21,7 @@ import {
   CardImageProps,
   CardProps,
 } from "./Card.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
 describe("Card Component", () => {
   const renderComponent = (props: CardProps) => render(<Card {...props} />);
@@ -34,6 +35,8 @@ describe("Card Component", () => {
     expect(component).toHaveTextContent(expected);
   });
 
+  testBulmaProps("Card", renderComponent);
+
   describe("Card Header Component", () => {
     const renderComponent = (props: CardHeaderProps) =>
       render(<CardHeader {...props} />);
@@ -46,6 +49,8 @@ describe("Card Component", () => {
 
       expect(component).toHaveTextContent(expected);
     });
+
+    testBulmaProps("CardHeader", renderComponent);
   });
 
   describe("Card Header Title Component", () => {
@@ -60,6 +65,8 @@ describe("Card Component", () => {
 
       expect(component).toHaveTextContent(expected);
     });
+
+    testBulmaProps("CardHeaderTitle", renderComponent);
   });
 
   describe("Card Header Icon Component", () => {
@@ -74,6 +81,8 @@ describe("Card Component", () => {
 
       expect(component).toHaveTextContent(expected);
     });
+
+    testBulmaProps("CardHeaderIcon", renderComponent);
   });
 
   describe("Card Image Component", () => {
@@ -88,6 +97,8 @@ describe("Card Component", () => {
 
       expect(component).toHaveTextContent(expected);
     });
+
+    testBulmaProps("CardImage", renderComponent);
   });
 
   describe("Card Content Component", () => {
@@ -102,6 +113,8 @@ describe("Card Component", () => {
 
       expect(component).toHaveTextContent(expected);
     });
+
+    testBulmaProps("CardContent", renderComponent);
   });
 
   describe("Card Footer Component", () => {
@@ -116,6 +129,8 @@ describe("Card Component", () => {
 
       expect(component).toHaveTextContent(expected);
     });
+
+    testBulmaProps("CardFooter", renderComponent);
   });
 
   describe("Card Footer Item Anchor Component", () => {
@@ -132,6 +147,8 @@ describe("Card Component", () => {
 
       expect(component).toHaveTextContent(expected);
     });
+
+    testBulmaProps("CardFooterItem", renderComponent);
   });
 
   describe("Card Footer Item Paragraph Component", () => {

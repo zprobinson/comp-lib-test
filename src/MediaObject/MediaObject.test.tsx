@@ -11,6 +11,7 @@ import {
   MediaContentProps,
   MediaRightProps,
 } from "./MediaObject.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
 describe("Media Object Component", () => {
   const renderComponent = (props: MediaObjectProps) =>
@@ -24,6 +25,8 @@ describe("Media Object Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("MediaObject", renderComponent);
 });
 
 describe("Media Left Component", () => {
@@ -38,6 +41,8 @@ describe("Media Left Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("MediaLeft", renderComponent);
 });
 
 describe("Media Content Component", () => {
@@ -52,6 +57,8 @@ describe("Media Content Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("MediaContent", renderComponent);
 });
 
 describe("Media Right Component", () => {
@@ -66,4 +73,6 @@ describe("Media Right Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("MediaRight", renderComponent);
 });

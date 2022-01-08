@@ -19,6 +19,7 @@ import {
   PanelTabProps,
   PanelTabsProps,
 } from "./Panel.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
 describe("Panel Component", () => {
   const renderComponent = (props: PanelProps) => render(<Panel {...props} />);
@@ -31,6 +32,8 @@ describe("Panel Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("Panel", renderComponent);
 });
 
 describe("Panel Block Div Component", () => {
@@ -45,6 +48,8 @@ describe("Panel Block Div Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("PanelBlock", renderComponent);
 });
 
 describe("Panel Block Anchor Component", () => {
@@ -107,6 +112,8 @@ describe("Panel Heading Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("PanelHeading", renderComponent);
 });
 
 describe("Panel Icon Component", () => {
@@ -121,6 +128,8 @@ describe("Panel Icon Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("PanelIcon", renderComponent);
 });
 
 describe("Panel Tab Component", () => {
@@ -145,6 +154,8 @@ describe("Panel Tab Component", () => {
 
     expect(onClick).toHaveBeenCalledTimes(1);
   });
+
+  testBulmaProps("PanelTab", renderComponent);
 });
 
 describe("Panel Tabs Component", () => {
@@ -159,4 +170,6 @@ describe("Panel Tabs Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("PanelTabs", renderComponent);
 });

@@ -15,6 +15,7 @@ import {
   PaginationLinkProps,
   PaginationEllipsisProps,
 } from "./Pagination.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
 describe("Pagination Component", () => {
   const renderComponent = (props: PaginationProps) =>
@@ -28,6 +29,8 @@ describe("Pagination Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("Pagination", renderComponent);
 });
 
 describe("Pagination Previous Component", () => {
@@ -42,6 +45,8 @@ describe("Pagination Previous Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("PaginationPrevious", renderComponent);
 });
 
 describe("Pagination Next Component", () => {
@@ -56,6 +61,8 @@ describe("Pagination Next Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("PaginationNext", renderComponent);
 });
 
 describe("Pagination List Component", () => {
@@ -70,6 +77,8 @@ describe("Pagination List Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("PaginationList", renderComponent);
 });
 
 describe("Pagination Link Component", () => {
@@ -87,6 +96,8 @@ describe("Pagination Link Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("PaginationLink", renderComponent);
 });
 
 describe("Pagination Ellipsis Component", () => {
@@ -103,4 +114,6 @@ describe("Pagination Ellipsis Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("PaginationEllipsis", renderComponent);
 });

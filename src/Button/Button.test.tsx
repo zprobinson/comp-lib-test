@@ -3,6 +3,7 @@ import { render, fireEvent } from "@testing-library/react";
 
 import Button from "./Button";
 import { ButtonProps } from "./Button.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
 describe("Button Component", () => {
   const renderComponent = (props: ButtonProps) => render(<Button {...props} />);
@@ -28,4 +29,6 @@ describe("Button Component", () => {
 
     expect(onClick).toHaveBeenCalledTimes(1);
   });
+
+  testBulmaProps("Button", renderComponent);
 });

@@ -20,6 +20,7 @@ import {
   TableHeaderCellProps,
   TableRowProps,
 } from "./Table.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
 afterEach(cleanup);
 
@@ -37,6 +38,8 @@ describe("Data Cell Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("TableDataCell", renderComponent);
 });
 
 describe("Header Cell Component", () => {
@@ -53,6 +56,8 @@ describe("Header Cell Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("TableHeaderCell", renderComponent);
 });
 
 describe("Table Row Component", () => {
@@ -70,6 +75,8 @@ describe("Table Row Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("TableRow", renderComponent);
 });
 
 describe("Table Header Component", () => {
@@ -91,6 +98,8 @@ describe("Table Header Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("TableHeader", renderComponent);
 });
 
 describe("Table Footer Component", () => {
@@ -112,6 +121,8 @@ describe("Table Footer Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("TableFooter", renderComponent);
 });
 
 describe("Table Body Component", () => {
@@ -133,6 +144,8 @@ describe("Table Body Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("TableBody", renderComponent);
 });
 
 describe("Table Component", () => {
@@ -153,6 +166,8 @@ describe("Table Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("Table", renderComponent);
 });
 
 describe("Table Container Component", () => {
@@ -167,4 +182,6 @@ describe("Table Container Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("TableContainer", renderComponent);
 });

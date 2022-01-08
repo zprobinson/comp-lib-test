@@ -3,6 +3,7 @@ import { render } from "@testing-library/react";
 
 import ProgressBar from "./ProgressBar";
 import { ProgressBarProps } from "./ProgressBar.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
 describe("Progress Bar Component", () => {
   const renderComponent = (props: ProgressBarProps) =>
@@ -24,4 +25,6 @@ describe("Progress Bar Component", () => {
 
     expect(component).not.toBeInTheDocument();
   });
+
+  testBulmaProps("ProgressBar", renderComponent);
 });

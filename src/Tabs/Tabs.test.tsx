@@ -11,6 +11,7 @@ import {
   TabsListProps,
   TabsListItemProps,
 } from "./Tabs.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
 describe("Tabs Component", () => {
   const renderComponent = (props: TabsProps) => render(<Tabs {...props} />);
@@ -23,6 +24,8 @@ describe("Tabs Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("Tabs", renderComponent);
 });
 
 describe("Tabs Link Component", () => {
@@ -54,6 +57,9 @@ describe("Tabs Link Component", () => {
 
     expect(onClick).toHaveBeenCalledTimes(1);
   });
+
+  // in this component, bulma helpers are applied to the inner anchor tag.
+  testBulmaProps("TabsLinkAnchor", renderComponent);
 });
 
 describe("Tabs List Component", () => {
@@ -68,6 +74,8 @@ describe("Tabs List Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("TabsList", renderComponent);
 });
 
 describe("Tabs List Item Component", () => {
@@ -76,10 +84,15 @@ describe("Tabs List Item Component", () => {
 
   it("should render children correctly", () => {
     const expected = "harvey was here";
-    const { getByTestId } = renderComponent({ children: expected });
+    const { getByTestId } = renderComponent({
+      children: expected,
+      textColor: "has-text-danger",
+    });
 
     const component = getByTestId("TabsListItem");
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("TabsListItem", renderComponent);
 });

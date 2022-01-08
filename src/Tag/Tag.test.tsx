@@ -6,6 +6,7 @@ import TagSpan from "./TagSpan";
 import Tags from "./Tags";
 import { TagAnchorProps, TagSpanProps } from "./Tag.types";
 import { TagsProps } from "./Tags.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
 describe("Tag Anchor Component", () => {
   const renderComponent = (props: TagAnchorProps) =>
@@ -38,6 +39,8 @@ describe("Tag Anchor Component", () => {
 
     expect(component).toHaveAttribute("href", href);
   });
+
+  testBulmaProps("Tag", renderComponent);
 });
 
 describe("Tag Span Component", () => {
@@ -62,6 +65,8 @@ describe("Tag Span Component", () => {
 
     expect(onClick).toHaveBeenCalledTimes(1);
   });
+
+  testBulmaProps("Tag", renderComponent);
 });
 
 describe("Tags Component", () => {
@@ -75,4 +80,6 @@ describe("Tags Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("Tags", renderComponent);
 });

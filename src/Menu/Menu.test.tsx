@@ -14,6 +14,7 @@ import {
   MenuListProps,
   MenuProps,
 } from "./Menu.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
 describe("Menu Component", () => {
   const renderComponent = (props: MenuProps) => render(<Menu {...props} />);
@@ -26,6 +27,8 @@ describe("Menu Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("Menu", renderComponent);
 });
 
 describe("Menu Label Component", () => {
@@ -40,6 +43,8 @@ describe("Menu Label Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("MenuLabel", renderComponent);
 });
 
 describe("Menu Link Component", () => {
@@ -57,6 +62,8 @@ describe("Menu Link Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("MenuLink", renderComponent);
 });
 
 describe("Menu List Component", () => {
@@ -71,6 +78,8 @@ describe("Menu List Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("MenuList", renderComponent);
 });
 
 describe("Menu List Item Component", () => {
@@ -88,4 +97,7 @@ describe("Menu List Item Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  // In this component, bulma styles are applied to the child anchor tag.
+  testBulmaProps("MenuListItemAnchor", renderComponent);
 });

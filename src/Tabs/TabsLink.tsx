@@ -19,7 +19,7 @@ const TabsLink: React.FC<InnerTabsLinkProps> = ({
 
   return (
     <li data-testid="TabsLink" className={classNames} {...liProps}>
-      <a className={className} {...props}>
+      <a data-testid="TabsLinkAnchor" className={className} {...props}>
         {children}
       </a>
     </li>

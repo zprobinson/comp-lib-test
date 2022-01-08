@@ -17,7 +17,7 @@ const MenuListItem: React.FC<InnerMenuListItemProps> = ({
 
   return (
     <li data-testid="MenuListItem">
-      <a className={classNames} {...props}>
+      <a data-testid="MenuListItemAnchor" className={classNames} {...props}>
         {children}
       </a>
     </li>

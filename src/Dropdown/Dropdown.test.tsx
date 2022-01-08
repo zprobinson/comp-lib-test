@@ -15,6 +15,7 @@ import {
   DropdownProps,
   DropdownTriggerProps,
 } from "./Dropdown.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
 describe("Dropdown Component", () => {
   const renderComponent = (props: DropdownProps) =>
@@ -28,6 +29,8 @@ describe("Dropdown Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("Dropdown", renderComponent);
 });
 
 describe("Dropdown Anchor Component", () => {
@@ -42,6 +45,8 @@ describe("Dropdown Anchor Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("DropdownAnchor", renderComponent);
 });
 
 describe("Dropdown Content Component", () => {
@@ -56,6 +61,8 @@ describe("Dropdown Content Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("DropdownContent", renderComponent);
 });
 
 describe("Dropdown Div Component", () => {
@@ -70,6 +77,8 @@ describe("Dropdown Div Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("DropdownDiv", renderComponent);
 });
 
 describe("Dropdown Menu Component", () => {
@@ -84,6 +93,8 @@ describe("Dropdown Menu Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("DropdownMenu", renderComponent);
 });
 
 describe("Dropdown Trigger Component", () => {
@@ -98,4 +109,6 @@ describe("Dropdown Trigger Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+
+  testBulmaProps("DropdownTrigger", renderComponent);
 });

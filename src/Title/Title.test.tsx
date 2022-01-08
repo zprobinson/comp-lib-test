@@ -4,6 +4,7 @@ import { render } from "@testing-library/react";
 import Title from "./Title";
 import Subtitle from "./Subtitle";
 import { SubtitleProps, TitleProps } from "./Title.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
 describe("Title", () => {
   const renderComponent = (props: TitleProps) => render(<Title {...props} />);
@@ -43,6 +44,8 @@ describe("Title", () => {
 
     expect(component).toBeInTheDocument();
   });
+
+  testBulmaProps("Title", renderComponent);
 });
 
 describe("Subitle", () => {
@@ -84,4 +87,6 @@ describe("Subitle", () => {
 
     expect(component).toBeInTheDocument();
   });
+
+  testBulmaProps("Subtitle", renderComponent);
 });
