@@ -26,7 +26,7 @@ const withBulmaPropsTest = <
     );
   };
 
-  ComponentWithBulmaProps.name = displayName;
+  ComponentWithBulmaProps.displayName = displayName;
 
   return ComponentWithBulmaProps;
 };
