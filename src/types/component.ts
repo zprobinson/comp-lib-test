@@ -58,6 +58,10 @@ export type BulmaComponentPropsWithoutRef<
   T extends React.ElementType
 > = BulmaHelpers & React.ComponentPropsWithoutRef<T>;
 
+export type BulmaComponentPropsWithRef<
+  T extends React.ElementType
+> = BulmaHelpers & React.ComponentPropsWithRef<T>;
+
 export type WithoutHelpers<T extends BulmaHelpers> = Omit<
   T,
   keyof BulmaHelpers
