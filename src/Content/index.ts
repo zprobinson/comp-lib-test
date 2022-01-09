@@ -1,2 +1,2 @@
-export { default as Context } from "./Content";
+export { default as Content } from "./Content";
 export { ContentProps } from "./Content.types";
