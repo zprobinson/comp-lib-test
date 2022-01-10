@@ -1,5 +1,4 @@
-import { WithoutHelpers } from "./../types/component";
-import { BulmaComponentPropsWithoutRef, Size } from "..";
+import { BulmaComponentPropsWithoutRef, Size, WithoutHelpers } from "../types";
 
 export type InnerIconProps = WithoutHelpers<IconProps>;
 export type InnerIconTextProps = WithoutHelpers<IconTextProps>;

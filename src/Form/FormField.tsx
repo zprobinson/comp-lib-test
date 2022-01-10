@@ -10,6 +10,8 @@ type KindProps = Pick<
 >;
 
 const getKindClasses: (props: KindProps) => string = ({ kind, ...props }) => {
+  if (kind === undefined) return "";
+
   const getAddonsClasses = ({
     alignment,
     isExpanded,
@@ -31,8 +33,6 @@ const getKindClasses: (props: KindProps) => string = ({ kind, ...props }) => {
       groupMultiline ? "is-grouped-multiline" : "",
     ]);
   };
-
-  if (kind === undefined) return "";
 
   return kind === "addons" ? getAddonsClasses(props) : getGroupedClasses(props);
 };
