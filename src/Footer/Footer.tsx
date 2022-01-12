@@ -1,5 +1,5 @@
 import React from "react";
-import { withBulmaProps } from "..";
+import withBulmaProps from "../bulma";
 
 const Footer: React.FC<React.ComponentPropsWithoutRef<"footer">> = ({
   className,
