@@ -1,7 +1,9 @@
 import React from "react";
+import withBulmaProps from "../bulma";
 import { foldClassNames } from "../utilities/listUtils";
-import { InnerFormTextAreaProps } from "./Form.types";
 import useFormFieldContext from "./formFieldContext";
+
+import { InnerFormTextAreaProps } from "./Form.types";
 
 const FormTextArea: React.FC<InnerFormTextAreaProps> = ({
   className,
@@ -31,4 +33,4 @@ const FormTextArea: React.FC<InnerFormTextAreaProps> = ({
   );
 };
 
-export default FormTextArea;
+export default withBulmaProps(FormTextArea);

@@ -1,5 +1,3 @@
-import { Equals } from "./../types/utility";
-import { WithoutHelpers } from "./../types/component";
 import { MouseEventHandler } from "react";
 import {
   BulmaComponentPropsWithoutRef,
@@ -8,8 +6,8 @@ import {
   PrimaryColor,
   SecondaryColor,
   Size,
-  BulmaHelpers,
-} from "..";
+  WithoutHelpers,
+} from "../types";
 
 export type InnerButtonProps = WithoutHelpers<ButtonProps>;
 

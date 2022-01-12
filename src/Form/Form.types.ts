@@ -8,6 +8,7 @@ import {
   Size,
   OneOrMore,
   PrimaryColor,
+  SecondaryColor,
 } from "./../types";
 
 export type FormFieldContextType = {
@@ -23,6 +24,7 @@ export type InnerFormTextAreaProps = WithoutHelpers<FormTextAreaProps>;
 export type InnerFormSelectProps = WithoutHelpers<FormSelectProps>;
 export type InnerFormCheckboxProps = WithoutHelpers<FormCheckboxProps>;
 export type InnerFormRadioProps = WithoutHelpers<FormRadioProps>;
+export type InnerFormFileProps = WithoutHelpers<FormFileProps>;
 
 export type FormProps = BulmaComponentPropsWithRef<"form">;
 
@@ -91,4 +93,32 @@ export type FormRadioProps = Omit<
     _innerRadioClassName?: string;
   },
   "type"
+>;
+
+export type FormSubmitButtonProps = Omit<
+  BulmaComponentPropsWithoutRef<"button">,
+  "type" | "onClick"
+>;
+
+export type FormFileProps = BulmaComponentPropsWithRef<"input"> & {
+  fileLabel?: string;
+  fileName?: string;
+  fileIcon?: JSX.Element;
+  color?: Is<PrimaryColor | SecondaryColor>;
+  size?: Size;
+  /**
+   * You can move the CTA to the right side with the _is-right_ modifier.
+   */
+  alignment?: Is<"right" | "centered">;
+  /**
+   * With the _has-name_ modifier combined with the _file-name_ element, you can add a placeholder for the selected file name.
+   */
+  hasName?: boolean;
+  isFullwidth?: boolean;
+  isBoxed?: boolean;
+};
+
+export type FormFileIconProps = Omit<
+  FormIconProps,
+  "containerSize" | "alignment"
 >;
