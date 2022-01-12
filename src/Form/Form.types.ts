@@ -100,7 +100,7 @@ export type FormSubmitButtonProps = Omit<
   "type" | "onClick"
 >;
 
-export type FormFileProps = BulmaComponentPropsWithRef<"input"> & {
+export type FormFileProps = BulmaComponentPropsWithoutRef<"input"> & {
   fileLabel?: string;
   fileName?: string;
   fileIcon?: JSX.Element;
