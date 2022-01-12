@@ -4,6 +4,7 @@ import { foldClassNames } from "../utilities/listUtils";
 import useFormFieldContext from "./formFieldContext";
 
 import { InnerFormFileProps } from "./Form.types";
+import { FormFileProps } from ".";
 
 const FormFile: React.FC<InnerFormFileProps> = ({
   children,
@@ -55,4 +56,10 @@ const FormFile: React.FC<InnerFormFileProps> = ({
   );
 };
 
-export default withBulmaProps(FormFile);
+const WithBulmaPropsFormFile = withBulmaProps(FormFile);
+
+export default React.forwardRef<HTMLInputElement, FormFileProps>(
+  (props, ref) => {
+    return <WithBulmaPropsFormFile {...props} ref={ref} />;
+  }
+);
