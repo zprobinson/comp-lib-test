@@ -77,7 +77,7 @@ const WrappedBulmaFormInput = withBulmaProps(BulmaFormInput);
 
 export const BulmaFormInputWithRef = forwardRef<
   HTMLInputElement,
-  FormInputProps
+  Parameters<typeof WrappedBulmaFormInput>["0"]
 >((props, ref) => {
   return <WrappedBulmaFormInput {...props} innerRef={ref} />;
 });

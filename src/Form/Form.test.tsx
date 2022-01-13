@@ -1,9 +1,11 @@
-
 import React from "react";
 import { render } from "@testing-library/react";
 
 import Form from "./Form";
-import { FormProps } from "./Form.types";
+import FormInput, { BulmaFormInputWithRef } from "./FormInput";
+import { FormInputProps, FormProps } from "./Form.types";
+import { testBulmaProps } from "../bulmaTests/bulmaTests";
+import { BulmaComponentPropsWithRef } from "../types";
 
 describe("Form Component", () => {
   const renderComponent = (props: FormProps) => render(<Form {...props} />);
@@ -16,4 +18,20 @@ describe("Form Component", () => {
 
     expect(component).toHaveTextContent(expected);
   });
+});
+
+describe("Form Input Component", () => {
+  const renderComponent = (props: FormInputProps) =>
+    render(<BulmaFormInputWithRef {...props} />);
+
+  it("should render size class", () => {
+    const expected: FormInputProps["size"] = "is-large";
+    const { getByTestId } = renderComponent({ size: expected });
+
+    const component = getByTestId("FormInput");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  testBulmaProps("FormInput", renderComponent);
 });

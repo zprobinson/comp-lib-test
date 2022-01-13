@@ -9,6 +9,7 @@ import {
   OneOrMore,
   PrimaryColor,
   SecondaryColor,
+  Override,
 } from "./../types";
 
 export type FormFieldContextType = {
@@ -28,18 +29,24 @@ export type InnerFormFileProps = WithoutHelpers<FormFileProps>;
 
 export type FormProps = BulmaComponentPropsWithRef<"form">;
 
-export type FormFieldProps = BulmaComponentPropsWithoutRef<"div"> & {
-  kind?: "addons" | "grouped";
-  alignment?: "right" | "centered";
-  groupMultiline?: boolean;
-  isExpanded?: boolean;
-  isHorizontal?: boolean;
-  size?: Size;
-};
+export type FormFieldProps = Override<
+  BulmaComponentPropsWithoutRef<"div">,
+  {
+    kind?: "addons" | "grouped";
+    alignment?: "right" | "centered";
+    groupMultiline?: boolean;
+    isExpanded?: boolean;
+    isHorizontal?: boolean;
+    size?: Size;
+  }
+>;
 
-export type FormFieldLabelProps = BulmaComponentPropsWithRef<"label"> & {
-  size?: Size;
-};
+export type FormFieldLabelProps = Override<
+  BulmaComponentPropsWithRef<"label">,
+  {
+    size?: Size;
+  }
+>;
 export type FormFieldBodyProps = BulmaComponentPropsWithoutRef<"div">;
 
 export type FormControlProps = BulmaComponentPropsWithoutRef<"div"> & {
@@ -52,32 +59,41 @@ export type FormIconProps = IconProps & {
   alignment?: Is<"left" | "right">;
 };
 
-export type FormInputProps = BulmaComponentPropsWithRef<"input"> & {
-  size?: Size;
-  color?: Is<PrimaryColor | "dark">;
-  isStatic?: boolean;
-  isLoading?: boolean;
-  isRounded?: boolean;
-  state?: Is<"focused" | "hovered">;
-};
+export type FormInputProps = Override<
+  BulmaComponentPropsWithRef<"input">,
+  {
+    size?: Size;
+    color?: Is<PrimaryColor | "dark">;
+    isStatic?: boolean;
+    isLoading?: boolean;
+    isRounded?: boolean;
+    state?: Is<"focused" | "hovered">;
+  }
+>;
 
-export type FormTextAreaProps = BulmaComponentPropsWithRef<"textarea"> & {
-  size?: Size;
-  color?: Is<PrimaryColor | "dark">;
-  state?: Is<"focused" | "hovered">;
-  isLoading?: boolean;
-  hasFixedSize?: boolean;
-};
+export type FormTextAreaProps = Override<
+  BulmaComponentPropsWithRef<"textarea">,
+  {
+    size?: Size;
+    color?: Is<PrimaryColor | "dark">;
+    state?: Is<"focused" | "hovered">;
+    isLoading?: boolean;
+    hasFixedSize?: boolean;
+  }
+>;
 
-export type FormSelectProps = BulmaComponentPropsWithRef<"select"> & {
-  size?: Size;
-  color?: Is<PrimaryColor | "dark">;
-  state?: Is<"focused" | "hovered" | "active">;
-  isLoading?: boolean;
-  isMultiple?: boolean;
-  isRounded?: boolean;
-  _innerSelectClassName?: string;
-};
+export type FormSelectProps = Override<
+  BulmaComponentPropsWithRef<"select">,
+  {
+    size?: Size;
+    color?: Is<PrimaryColor | "dark">;
+    state?: Is<"focused" | "hovered" | "active">;
+    isLoading?: boolean;
+    isMultiple?: boolean;
+    isRounded?: boolean;
+    _innerSelectClassName?: string;
+  }
+>;
 
 export type FormCheckboxProps = Omit<
   BulmaComponentPropsWithRef<"input"> & {
@@ -100,23 +116,26 @@ export type FormSubmitButtonProps = Omit<
   "type" | "onClick"
 >;
 
-export type FormFileProps = BulmaComponentPropsWithRef<"input"> & {
-  fileLabel?: string;
-  fileName?: string;
-  fileIcon?: JSX.Element;
-  color?: Is<PrimaryColor | SecondaryColor>;
-  size?: Size;
-  /**
-   * You can move the CTA to the right side with the _is-right_ modifier.
-   */
-  alignment?: Is<"right" | "centered">;
-  /**
-   * With the _has-name_ modifier combined with the _file-name_ element, you can add a placeholder for the selected file name.
-   */
-  hasName?: boolean;
-  isFullwidth?: boolean;
-  isBoxed?: boolean;
-};
+export type FormFileProps = Override<
+  BulmaComponentPropsWithRef<"input">,
+  {
+    fileLabel?: string;
+    fileName?: string;
+    fileIcon?: JSX.Element;
+    color?: Is<PrimaryColor | SecondaryColor>;
+    size?: Size;
+    /**
+     * You can move the CTA to the right side with the _is-right_ modifier.
+     */
+    alignment?: Is<"right" | "centered">;
+    /**
+     * With the _has-name_ modifier combined with the _file-name_ element, you can add a placeholder for the selected file name.
+     */
+    hasName?: boolean;
+    isFullwidth?: boolean;
+    isBoxed?: boolean;
+  }
+>;
 
 export type FormFileIconProps = Omit<
   FormIconProps,
