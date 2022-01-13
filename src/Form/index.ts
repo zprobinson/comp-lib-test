@@ -3,7 +3,7 @@ export { default as FormControl } from "./FormControl";
 export { default as Field } from "./FormField";
 export { default as FieldBody } from "./FormFieldBody";
 export { default as FieldLabel } from "./FormFieldLabel";
-export { default as Input, FormInputWithoutBulmaProps } from "./FormInput";
+export { default as Input, BulmaFormInputWithRef } from "./FormInput";
 export { default as Checkbox } from "./FormCheckbox";
 export { default as Radio } from "./FormRadio";
 export { default as Select } from "./FormSelect";
