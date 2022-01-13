@@ -73,11 +73,13 @@ const BulmaFormInput: React.FC<
   );
 };
 
+const WrappedBulmaFormInput = withBulmaProps(BulmaFormInput);
+
 export const BulmaFormInputWithRef = forwardRef<
   HTMLInputElement,
   FormInputProps
 >((props, ref) => {
-  return <BulmaFormInput {...props} innerRef={ref} />;
+  return <WrappedBulmaFormInput {...props} innerRef={ref} />;
 });
 
 export default withBulmaProps(FormInput);
