@@ -11,7 +11,7 @@ export { default as TextArea } from "./FormTextArea";
 export { default as SubmitButton } from "./SubmitButton";
 export { default as FormIcon } from "./FormIcon";
 
-export { default as File } from "./FormFile";
+export { default as File, FormFileWithoutBulmaProps } from "./FormFile";
 export { default as FileIcon } from "./FormFileIcon";
 
 export {

@@ -64,4 +64,6 @@ const FormFile: React.FC<InnerFormFileProps> = React.forwardRef<
   }
 );
 
+export const FormFileWithoutBulmaProps = FormFile;
+
 export default withBulmaProps(FormFile);
