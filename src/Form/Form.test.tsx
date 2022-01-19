@@ -11,7 +11,9 @@ import {
   FormCheckboxProps,
   FormControlProps,
   FormFieldBodyProps,
+  FormFieldLabelProps,
   FormFieldProps,
+  FormFileProps,
   FormInputProps,
   FormProps,
 } from "./Form.types";
@@ -474,3 +476,207 @@ describe("Form Field Body Component", () => {
   testBulmaProps("FormFieldBody", renderComponent);
 });
 
+describe("Form Field Label Component", () => {
+  const renderComponent = (props: FormFieldLabelProps) =>
+    render(<FormFieldLabel {...props} />);
+
+  it("should render children correctly", () => {
+    const expected = "harvey was here";
+    const { getByTestId } = renderComponent({ children: expected });
+
+    const component = getByTestId("FormFieldLabel");
+
+    expect(component).toHaveTextContent(expected);
+  });
+
+  it("should have the label class", () => {
+    const expected = "label";
+    const { getByTestId } = renderComponent({});
+
+    const component = getByTestId("FormFieldLabel");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  it("should have size class", () => {
+    const expected: FormFieldLabelProps["size"] = "is-normal";
+    const { getByTestId } = renderComponent({ size: expected });
+
+    const component = getByTestId("FormFieldLabel");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  testBulmaProps("FormFieldLabel", renderComponent);
+});
+
+describe("Form File Component", () => {
+  const renderComponent = (props: FormFileProps) =>
+    render(<FormFile {...props} />);
+
+  it("should render children correctly", () => {
+    const expected = "harvey was here";
+    const { getByTestId } = renderComponent({ children: expected });
+
+    const component = getByTestId("FormFileCta");
+
+    expect(component).toHaveTextContent(expected);
+  });
+
+  it("should contain a div with class of file", () => {
+    const expected = "file";
+    const { getByTestId } = renderComponent({});
+
+    const component = getByTestId("FormFileDiv");
+
+    expect(component).toHaveClass(expected);
+    expect(component.tagName).toMatch(/div/i);
+  });
+
+  it("should contain a label with class of file-label", () => {
+    const expected = "file-label";
+    const { getByTestId } = renderComponent({});
+
+    const component = getByTestId("FormFileLabel");
+
+    expect(component).toHaveClass(expected);
+    expect(component.tagName).toMatch(/label/i);
+  });
+
+  it("should contain an input with class of file-input", () => {
+    const expected = "file-input";
+    const { getByTestId } = renderComponent({});
+
+    const component = getByTestId("FormFileInput");
+
+    expect(component).toHaveClass(expected);
+    expect(component.tagName).toMatch(/input/i);
+  });
+
+  it("should contain a span with class of file-cta for icons", () => {
+    const expected = "file-cta";
+    const { getByTestId } = renderComponent({});
+
+    const component = getByTestId("FormFileCta");
+
+    expect(component).toHaveClass(expected);
+    expect(component.tagName).toMatch(/span/i);
+  });
+
+  it("should contain a span with class of file-label", () => {
+    const expected = "file-label";
+    const { getByTestId } = renderComponent({});
+
+    const component = getByTestId("FormFileLabelDescription");
+
+    expect(component).toHaveClass(expected);
+    expect(component.tagName).toMatch(/span/i);
+  });
+
+  it("should contain default text of Choose a file... in LabelDescription", () => {
+    const expected = "Choose a file...";
+    const { getByTestId } = renderComponent({});
+
+    const component = getByTestId("FormFileLabelDescription");
+
+    expect(component).toHaveTextContent(expected);
+  });
+
+  it("should not contain a span with FormFileFileName if file name is not passed", () => {
+    const { queryByTestId } = renderComponent({});
+
+    const component = queryByTestId("FormFileFileName");
+
+    expect(component).not.toBeInTheDocument();
+  });
+
+  it("should contain a span with class of file-name with given text", () => {
+    const expected = "file name here";
+    const expectedClass = "file-name";
+    const { getByTestId } = renderComponent({ fileName: expected });
+
+    const component = getByTestId("FormFileFileName");
+
+    expect(component).toHaveTextContent(expected);
+    expect(component).toHaveClass(expectedClass);
+    expect(component.tagName).toMatch(/span/i);
+  });
+
+  it("should contain fileLabel when passed", () => {
+    const expected = "my file label";
+    const { getByTestId } = renderComponent({ fileLabel: expected });
+
+    const component = getByTestId("FormFileLabel");
+
+    expect(component).toHaveTextContent(expected);
+  });
+
+  it("should contain fileIcon component when passed", () => {
+    const expected = "test icon";
+    const fileIcon = <div data-testid="TestIcon">{expected}</div>;
+    const { getByTestId } = renderComponent({ fileIcon });
+
+    const component = getByTestId("TestIcon");
+
+    expect(component).toHaveTextContent(expected);
+  });
+
+  it("should contain color class", () => {
+    const expected: FormFileProps["color"] = "is-primary";
+    const { getByTestId } = renderComponent({ color: expected });
+
+    const component = getByTestId("FormFileDiv");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  it("should contain size class", () => {
+    const expected: FormFileProps["size"] = "is-small";
+    const { getByTestId } = renderComponent({ size: expected });
+
+    const component = getByTestId("FormFileDiv");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  it("should contain alignment class", () => {
+    const expected: FormFileProps["alignment"] = "is-centered";
+    const { getByTestId } = renderComponent({ alignment: expected });
+
+    const component = getByTestId("FormFileDiv");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  it("should contain has-name class", () => {
+    const expected = "has-name";
+    const hasName: FormFileProps["hasName"] = true;
+    const { getByTestId } = renderComponent({ hasName });
+
+    const component = getByTestId("FormFileDiv");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  it("should contain is-fullwidth class", () => {
+    const expected = "is-fullwidth";
+    const isFullwidth: FormFileProps["isFullwidth"] = true;
+    const { getByTestId } = renderComponent({ isFullwidth });
+
+    const component = getByTestId("FormFileDiv");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  it("should contain is-boxed class", () => {
+    const expected = "is-boxed";
+    const isBoxed: FormFileProps["isBoxed"] = true;
+    const { getByTestId } = renderComponent({ isBoxed });
+
+    const component = getByTestId("FormFileDiv");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  testBulmaProps("FormFileDiv", renderComponent);
+});
