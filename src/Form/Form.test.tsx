@@ -15,6 +15,7 @@ import {
   FormFieldProps,
   FormFileIconProps,
   FormFileProps,
+  FormIconProps,
   FormInputProps,
   FormProps,
 } from "./Form.types";
@@ -24,6 +25,7 @@ import FormSelect from "./FormSelect";
 import FormTextArea from "./FormTextArea";
 import FormFieldBody from "./FormFieldBody";
 import FormFileIcon from "./FormFileIcon";
+import FormIcon from "./FormIcon";
 
 describe("Form Component", () => {
   const renderComponent = (props: FormProps) => render(<Form {...props} />);
@@ -706,4 +708,29 @@ describe("Form File Icon Component", () => {
   });
 
   testBulmaProps("FormFileIcon", renderComponent);
+});
+
+describe("Form Icon Component", () => {
+  const renderComponent = (props: FormIconProps) =>
+    render(<FormIcon {...props} />);
+
+  it("should render children correctly", () => {
+    const expected = "harvey was here";
+    const { getByTestId } = renderComponent({ children: expected });
+
+    const component = getByTestId("Icon");
+
+    expect(component).toHaveTextContent(expected);
+  });
+
+  it("should have alignment class", () => {
+    const expected: FormIconProps["alignment"] = "is-left";
+    const { getByTestId } = renderComponent({ alignment: expected });
+
+    const component = getByTestId("Icon");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  testBulmaProps("Icon", renderComponent);
 });
