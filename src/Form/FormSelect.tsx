@@ -1,11 +1,13 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import withBulmaProps from "../bulma";
 import { foldClassNames } from "../utilities/listUtils";
 import useFormFieldContext from "./formFieldContext";
 
 import { InnerFormSelectProps } from "./Form.types";
 
-const FormSelect: React.FC<InnerFormSelectProps> = ({
+const FormSelect: React.FC<
+  InnerFormSelectProps & { innerRef?: React.Ref<HTMLSelectElement> }
+> = ({
   className,
   size,
   color,
@@ -14,6 +16,7 @@ const FormSelect: React.FC<InnerFormSelectProps> = ({
   isMultiple = false,
   isRounded = false,
   _innerSelectClassName = "",
+  innerRef,
   ...props
 }) => {
   const context = useFormFieldContext();
@@ -35,10 +38,18 @@ const FormSelect: React.FC<InnerFormSelectProps> = ({
       <select
         data-testid="FormSelect"
         className={selectClassNames}
+        ref={innerRef}
         {...props}
       ></select>
     </div>
   );
 };
 
-export default withBulmaProps(FormSelect);
+const WrappedBulmaFormSelect = withBulmaProps(FormSelect);
+
+export default forwardRef<
+  HTMLSelectElement,
+  Parameters<typeof WrappedBulmaFormSelect>[0]
+>((props, ref) => {
+  return <WrappedBulmaFormSelect {...props} innerRef={ref} />;
+});

@@ -3,41 +3,9 @@ import withBulmaProps from "../bulma";
 import { foldClassNames } from "../utilities/listUtils";
 import useFormFieldContext from "./formFieldContext";
 
-import { FormInputProps, InnerFormInputProps } from "./Form.types";
+import { InnerFormInputProps } from "./Form.types";
 
-const FormInput: React.FC<InnerFormInputProps> = ({
-  className,
-  size,
-  color,
-  state,
-  isStatic = false,
-  isLoading = false,
-  isRounded = false,
-  type,
-  ...props
-}) => {
-  const context = useFormFieldContext();
-  const classNames = foldClassNames([
-    className ?? "",
-    size ?? context.size ?? "",
-    color ?? "",
-    state ?? "",
-    isStatic ? "is-static" : "",
-    isLoading ? "is-loading" : "",
-    isRounded ? "is-rounded" : "",
-  ]);
-
-  return (
-    <input
-      data-testid="FormInput"
-      type={type ?? "text"}
-      className={`input ${classNames}`}
-      {...props}
-    ></input>
-  );
-};
-
-const BulmaFormInput: React.FC<
+const FormInput: React.FC<
   InnerFormInputProps & { innerRef?: React.Ref<HTMLInputElement> }
 > = ({
   className,
@@ -73,13 +41,11 @@ const BulmaFormInput: React.FC<
   );
 };
 
-const WrappedBulmaFormInput = withBulmaProps(BulmaFormInput);
+const WrappedBulmaFormInput = withBulmaProps(FormInput);
 
-export const BulmaFormInputWithRef = forwardRef<
+export default forwardRef<
   HTMLInputElement,
-  Parameters<typeof WrappedBulmaFormInput>["0"]
+  Parameters<typeof WrappedBulmaFormInput>[0]
 >((props, ref) => {
   return <WrappedBulmaFormInput {...props} innerRef={ref} />;
 });
-
-export default withBulmaProps(FormInput);

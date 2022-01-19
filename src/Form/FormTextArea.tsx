@@ -1,17 +1,20 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import withBulmaProps from "../bulma";
 import { foldClassNames } from "../utilities/listUtils";
 import useFormFieldContext from "./formFieldContext";
 
 import { InnerFormTextAreaProps } from "./Form.types";
 
-const FormTextArea: React.FC<InnerFormTextAreaProps> = ({
+const FormTextArea: React.FC<
+  InnerFormTextAreaProps & { innerRef?: React.Ref<HTMLTextAreaElement> }
+> = ({
   className,
   size,
   color,
   state,
   isLoading = false,
   hasFixedSize = false,
+  innerRef,
   ...props
 }) => {
   const context = useFormFieldContext();
@@ -28,9 +31,17 @@ const FormTextArea: React.FC<InnerFormTextAreaProps> = ({
     <textarea
       data-testid="FormTextArea"
       className={`textarea ${classNames}`}
+      ref={innerRef}
       {...props}
     ></textarea>
   );
 };
 
-export default withBulmaProps(FormTextArea);
+const WrappedBulmaTextAreaInput = withBulmaProps(FormTextArea);
+
+export default forwardRef<
+  HTMLTextAreaElement,
+  Parameters<typeof WrappedBulmaTextAreaInput>[0]
+>((props, ref) => {
+  return <WrappedBulmaTextAreaInput {...props} innerRef={ref} />;
+});
