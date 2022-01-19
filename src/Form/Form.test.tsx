@@ -10,6 +10,7 @@ import FormFieldLabel from "./FormFieldLabel";
 import {
   FormCheckboxProps,
   FormControlProps,
+  FormFieldBodyProps,
   FormFieldProps,
   FormInputProps,
   FormProps,
@@ -18,6 +19,7 @@ import { testBulmaProps } from "../bulmaTests/bulmaTests";
 import FormFile from "./FormFile";
 import FormSelect from "./FormSelect";
 import FormTextArea from "./FormTextArea";
+import FormFieldBody from "./FormFieldBody";
 
 describe("Form Component", () => {
   const renderComponent = (props: FormProps) => render(<Form {...props} />);
@@ -446,3 +448,29 @@ describe("Form Field Component", () => {
 
   testBulmaProps("FormField", renderComponent);
 });
+
+describe("Form Field Body Component", () => {
+  const renderComponent = (props: FormFieldBodyProps) =>
+    render(<FormFieldBody {...props} />);
+
+  it("should render children correctly", () => {
+    const expected = "harvey was here";
+    const { getByTestId } = renderComponent({ children: expected });
+
+    const component = getByTestId("FormFieldBody");
+
+    expect(component).toHaveTextContent(expected);
+  });
+
+  it("should have the field-body class", () => {
+    const expected = "field-body";
+    const { getByTestId } = renderComponent({});
+
+    const component = getByTestId("FormFieldBody");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  testBulmaProps("FormFieldBody", renderComponent);
+});
+
