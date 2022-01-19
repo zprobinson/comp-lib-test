@@ -5,13 +5,19 @@ import Form from "./Form";
 import FormInput from "./FormInput";
 import FormCheckbox from "./FormCheckbox";
 import FormControl from "./FormControl";
+import FormField from "./FormField";
+import FormFieldLabel from "./FormFieldLabel";
 import {
   FormCheckboxProps,
   FormControlProps,
+  FormFieldProps,
   FormInputProps,
   FormProps,
 } from "./Form.types";
 import { testBulmaProps } from "../bulmaTests/bulmaTests";
+import FormFile from "./FormFile";
+import FormSelect from "./FormSelect";
+import FormTextArea from "./FormTextArea";
 
 describe("Form Component", () => {
   const renderComponent = (props: FormProps) => render(<Form {...props} />);
@@ -29,6 +35,15 @@ describe("Form Component", () => {
 describe("Form Input Component", () => {
   const renderComponent = (props: FormInputProps) =>
     render(<FormInput {...props} />);
+
+  it("should have input class", () => {
+    const expected = "input";
+    const { getByTestId } = renderComponent({});
+
+    const component = getByTestId("FormInput");
+
+    expect(component).toHaveClass(expected);
+  });
 
   it("should render size class", () => {
     const expected: FormInputProps["size"] = "is-large";
@@ -107,6 +122,15 @@ describe("Form Checkbox Component", () => {
     expect(component).toHaveTextContent(expected);
   });
 
+  it("should have checkbox class correctly", () => {
+    const expected = "checkbox";
+    const { getByTestId } = renderComponent({});
+
+    const component = getByTestId("FormCheckboxLabel");
+
+    expect(component).toHaveClass(expected);
+  });
+
   it("should be checked when clicked", () => {
     const { getByTestId } = renderComponent({});
 
@@ -176,6 +200,15 @@ describe("Form Control Component", () => {
     expect(component).toHaveTextContent(expected);
   });
 
+  it("should have control class", () => {
+    const expected = "control";
+    const { getByTestId } = renderComponent({});
+
+    const component = getByTestId("FormControl");
+
+    expect(component).toHaveClass(expected);
+  });
+
   it("should have one iconAlignment class", () => {
     const expected: FormControlProps["iconAlignment"] = "has-icons-left";
     const { getByTestId } = renderComponent({ iconAlignment: expected });
@@ -219,4 +252,197 @@ describe("Form Control Component", () => {
   });
 
   testBulmaProps("FormControl", renderComponent);
+});
+
+describe("Form Field Component", () => {
+  const renderComponent = (props: FormFieldProps) =>
+    render(<FormField {...props} />);
+
+  it("should render children correctly", () => {
+    const expected = "harvey was here";
+    const { getByTestId } = renderComponent({ children: expected });
+
+    const component = getByTestId("FormField");
+
+    expect(component).toHaveTextContent(expected);
+  });
+
+  it("should have field class", () => {
+    const expected = "field";
+    const { getByTestId } = renderComponent({});
+
+    const component = getByTestId("FormField");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  describe("Form Field Kind tests", () => {
+    it("should not render kind class", () => {
+      const kind: FormFieldProps["kind"] = undefined;
+      const redHerringOne = "has-addons";
+      const redHerringTwo = "is-grouped";
+      const { getByTestId } = renderComponent({ kind });
+
+      const component = getByTestId("FormField");
+
+      expect(component).not.toHaveClass(redHerringOne);
+      expect(component).not.toHaveClass(redHerringTwo);
+    });
+
+    it("should not render kind class even when passed alignment", () => {
+      const kind: FormFieldProps["kind"] = undefined;
+      const alignment: FormFieldProps["alignment"] = "right";
+      const redHerringOne = "has-addons";
+      const redHerringTwo = "is-grouped";
+      const { getByTestId } = renderComponent({ kind, alignment });
+
+      const component = getByTestId("FormField");
+
+      expect(component).not.toHaveClass(redHerringOne);
+      expect(component).not.toHaveClass(redHerringTwo);
+    });
+
+    it("should render has-addons kind class", () => {
+      const kind: FormFieldProps["kind"] = "addons";
+      const expected = "has-addons";
+      const { getByTestId } = renderComponent({ kind });
+
+      const component = getByTestId("FormField");
+
+      expect(component).toHaveClass(expected);
+    });
+
+    it("should render has-addons and alignment kind class", () => {
+      const kind: FormFieldProps["kind"] = "addons";
+      const alignment: FormFieldProps["alignment"] = "right";
+      const expected = "has-addons has-addons-right";
+      const { getByTestId } = renderComponent({ kind, alignment });
+
+      const component = getByTestId("FormField");
+
+      expect(component).toHaveClass(expected);
+    });
+
+    it("should render is-expanded in addition to kind alignment class", () => {
+      const kind: FormFieldProps["kind"] = "addons";
+      const alignment: FormFieldProps["alignment"] = "right";
+      const isExpanded: FormFieldProps["isExpanded"] = true;
+      const expected = "has-addons has-addons-right is-expanded";
+
+      const { getByTestId } = renderComponent({ kind, alignment, isExpanded });
+
+      const component = getByTestId("FormField");
+
+      expect(component).toHaveClass(expected);
+    });
+
+    it("should render is-grouped kind class", () => {
+      const kind: FormFieldProps["kind"] = "grouped";
+      const expected = "is-grouped";
+      const { getByTestId } = renderComponent({ kind });
+
+      const component = getByTestId("FormField");
+
+      expect(component).toHaveClass(expected);
+    });
+
+    it("should render is-grouped and alignment kind class", () => {
+      const kind: FormFieldProps["kind"] = "grouped";
+      const alignment: FormFieldProps["alignment"] = "centered";
+      const expected = "is-grouped is-grouped-centered";
+      const { getByTestId } = renderComponent({ kind, alignment });
+
+      const component = getByTestId("FormField");
+
+      expect(component).toHaveClass(expected);
+    });
+
+    it("should render is-grouped-multiline in addition to is-grouped and alignment kind class", () => {
+      const kind: FormFieldProps["kind"] = "grouped";
+      const alignment: FormFieldProps["alignment"] = "centered";
+      const groupMultiline: FormFieldProps["groupMultiline"] = true;
+      const expected = "is-grouped is-grouped-centered is-grouped-multiline";
+      const { getByTestId } = renderComponent({
+        kind,
+        alignment,
+        groupMultiline,
+      });
+
+      const component = getByTestId("FormField");
+
+      expect(component).toHaveClass(expected);
+    });
+  });
+
+  it("should render is-horizontal class", () => {
+    const isHorizontal: FormFieldProps["isHorizontal"] = true;
+    const expected = "is-horizontal";
+    const { getByTestId } = renderComponent({ isHorizontal });
+
+    const component = getByTestId("FormField");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  describe("Form Field Size tests", () => {
+    // FormField passes the size property down into children via Context.
+    const renderComponent = (props: FormFieldProps) =>
+      render(
+        <FormField {...props}>
+          <FormFieldLabel>Test Label</FormFieldLabel>
+          <FormControl>
+            <FormInput />
+            <FormFile />
+            <FormSelect />
+            <FormTextArea />
+          </FormControl>
+        </FormField>
+      );
+
+    // Children of FormField can override context if they'd like.
+    const renderComponentLabelOverriddenIsSmall = (props: FormFieldProps) =>
+      render(
+        <FormField {...props}>
+          <FormFieldLabel size="is-small">Test Label</FormFieldLabel>
+          <FormControl>
+            <FormInput />
+          </FormControl>
+        </FormField>
+      );
+
+    it("should not have size class itself", () => {
+      const redHerring: FormFieldProps["size"] = "is-large";
+      const { getByTestId } = renderComponent({ size: redHerring });
+
+      const component = getByTestId("FormField");
+
+      expect(component).not.toHaveClass(redHerring);
+    });
+
+    it("should pass size class down into relevant child components", () => {
+      const expected: FormFieldProps["size"] = "is-large";
+      const { getByTestId } = renderComponent({ size: expected });
+
+      expect(getByTestId("FormFieldLabel")).toHaveClass(expected);
+      expect(getByTestId("FormControl")).toHaveClass(expected);
+      expect(getByTestId("FormInput")).toHaveClass(expected);
+      expect(getByTestId("FormFileDiv")).toHaveClass(expected);
+      expect(getByTestId("FormSelectContainer")).toHaveClass(expected);
+      expect(getByTestId("FormTextArea")).toHaveClass(expected);
+    });
+
+    it("should pass size class down into relevant child components unless overridden", () => {
+      const expected: FormFieldProps["size"] = "is-medium";
+      const labelSize = "is-small";
+      const { getByTestId } = renderComponentLabelOverriddenIsSmall({
+        size: expected,
+      });
+
+      expect(getByTestId("FormFieldLabel")).toHaveClass(labelSize);
+      expect(getByTestId("FormControl")).toHaveClass(expected);
+      expect(getByTestId("FormInput")).toHaveClass(expected);
+    });
+  });
+
+  testBulmaProps("FormField", renderComponent);
 });
