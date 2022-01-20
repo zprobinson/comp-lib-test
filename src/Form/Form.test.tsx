@@ -18,6 +18,7 @@ import {
   FormIconProps,
   FormInputProps,
   FormProps,
+  FormRadioProps,
 } from "./Form.types";
 import { testBulmaProps } from "../bulmaTests/bulmaTests";
 import FormFile from "./FormFile";
@@ -26,6 +27,7 @@ import FormTextArea from "./FormTextArea";
 import FormFieldBody from "./FormFieldBody";
 import FormFileIcon from "./FormFileIcon";
 import FormIcon from "./FormIcon";
+import FormRadio from "./FormRadio";
 
 describe("Form Component", () => {
   const renderComponent = (props: FormProps) => render(<Form {...props} />);
@@ -733,4 +735,83 @@ describe("Form Icon Component", () => {
   });
 
   testBulmaProps("Icon", renderComponent);
+});
+
+describe("Form Radio Component", () => {
+  const renderComponent = (props: FormRadioProps) =>
+    render(<FormRadio {...props} />);
+
+  it("should render children correctly", () => {
+    const expected = "harvey was here";
+    const { getByTestId } = renderComponent({ children: expected });
+
+    const component = getByTestId("FormRadioLabel");
+
+    expect(component).toHaveTextContent(expected);
+  });
+
+  it("should have label element with radio class", () => {
+    const expected = "radio";
+    const { getByTestId } = renderComponent({});
+
+    const component = getByTestId("FormRadioLabel");
+
+    expect(component).toHaveClass(expected);
+    expect(component.tagName).toMatch(/label/i);
+  });
+
+  it("should be checked when clicked", () => {
+    const { getByTestId } = renderComponent({});
+
+    const component = getByTestId("FormRadio");
+
+    expect(component).not.toBeChecked();
+
+    fireEvent.click(component);
+
+    expect(component).toBeChecked();
+  });
+
+  it("should contain classNames on radio when _innerRadioClassName is passed", () => {
+    const expected = "foo bar-baz";
+    const { getByTestId } = renderComponent({
+      _innerRadioClassName: expected,
+    });
+
+    const component = getByTestId("FormRadio");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  it("should have style on radio label when _innerDisabledColor is passed and disabled is true", () => {
+    const expected = "red";
+    const { getByTestId } = renderComponent({
+      disabled: true,
+      _innerDisabledColor: expected,
+    });
+
+    const component = getByTestId("FormRadioLabel");
+
+    expect(component).toHaveStyle({
+      cursor: "not-allowed",
+      color: expected,
+    });
+  });
+
+  it("should have no style on radio label when _innerDisabledColor is passed and disable is false", () => {
+    const redHerring = "red";
+    const { getByTestId } = renderComponent({
+      disabled: false,
+      _innerDisabledColor: redHerring,
+    });
+
+    const component = getByTestId("FormRadioLabel");
+
+    expect(component).toHaveStyle({
+      cursor: "default",
+      color: undefined,
+    });
+  });
+
+  testBulmaProps("FormRadioLabel", renderComponent);
 });
