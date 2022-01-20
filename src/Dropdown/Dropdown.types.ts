@@ -25,7 +25,7 @@ type DropdownItemPropsBase = { isActive?: boolean };
  */
 export type DropdownAnchorProps = BulmaComponentPropsWithoutRef<"a"> &
   DropdownItemPropsBase;
-  /**
+/**
  * @deprecated Use DropdownItem with the `as` prop instead.
  */
 export type DropdownDivProps = BulmaComponentPropsWithoutRef<"div"> &

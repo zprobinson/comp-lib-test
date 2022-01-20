@@ -1,6 +1,9 @@
 import React from "react";
 import withBulmaProps from "../bulma";
 
+/**
+ * @deprecated Use PanelBlock with the `as` prop instead.
+ */
 const PanelBlockDiv: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
   children,
   className,
@@ -17,4 +20,7 @@ const PanelBlockDiv: React.FC<React.ComponentPropsWithoutRef<"div">> = ({
   );
 };
 
+/**
+ * @deprecated Use PanelBlock with the `as` prop instead.
+ */
 export default withBulmaProps(PanelBlockDiv);
