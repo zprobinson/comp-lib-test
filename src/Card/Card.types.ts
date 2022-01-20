@@ -20,7 +20,13 @@ export type CardImageProps = BulmaComponentPropsWithoutRef<"div">;
 export type CardContentProps = BulmaComponentPropsWithoutRef<"div">;
 
 export type CardFooterProps = BulmaComponentPropsWithoutRef<"footer">;
+/**
+ * @deprecated Use CardFooterItemProps with the `as` prop instead.
+ */
 export type CardFooterItemAnchorProps = BulmaComponentPropsWithoutRef<"a">;
+/**
+ * @deprecated Use CardFooterItem with the `as` prop instead.
+ */
 export type CardFooterItemParagraphProps = BulmaComponentPropsWithoutRef<"div">;
 
 export type CardFooterItemProps<E extends React.ElementType> = Polymorphic<

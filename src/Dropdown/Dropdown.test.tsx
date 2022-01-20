@@ -5,6 +5,7 @@ import Dropdown from "./Dropdown";
 import DropdownAnchor from "./DropdownAnchor";
 import DropdownContent from "./DropdownContent";
 import DropdownDiv from "./DropdownDiv";
+import DropdownItem from "./DropdownItem";
 import DropdownMenu from "./DropdownMenu";
 import DropdownTrigger from "./DropdownTrigger";
 import {
@@ -14,6 +15,7 @@ import {
   DropdownMenuProps,
   DropdownProps,
   DropdownTriggerProps,
+  DropdownItemProps,
 } from "./Dropdown.types";
 import { testBulmaProps } from "../bulmaTests/bulmaTests";
 
@@ -111,4 +113,46 @@ describe("Dropdown Trigger Component", () => {
   });
 
   testBulmaProps("DropdownTrigger", renderComponent);
+});
+
+describe("Dropdown Item Component", () => {
+  const renderComponent = <E extends React.ElementType = React.ElementType>(
+    props: DropdownItemProps<E>
+  ) => render(<DropdownItem {...props} />);
+
+  it("should render children correctly", () => {
+    const expected = "harvey was here";
+    const { getByTestId } = renderComponent({ children: expected });
+
+    const component = getByTestId("DropdownItem");
+
+    expect(component).toHaveTextContent(expected);
+  });
+
+  it("should have dropdown-item class", () => {
+    const expected = "dropdown-item";
+    const { getByTestId } = renderComponent({});
+
+    const component = getByTestId("DropdownItem");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  it("should render as an anchor tag", () => {
+    const { getByTestId } = renderComponent({ href: "test " });
+
+    const component = getByTestId("DropdownItem");
+
+    expect(component.tagName).toMatch(/a/i);
+  });
+
+  it("should render as a div tag", () => {
+    const { getByTestId } = renderComponent({ as: "div" });
+
+    const component = getByTestId("DropdownItem");
+
+    expect(component.tagName).toMatch(/div/i);
+  });
+
+  testBulmaProps("DropdownItem", renderComponent);
 });

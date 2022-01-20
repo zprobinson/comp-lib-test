@@ -4,6 +4,9 @@ import { foldClassNames } from "../utilities/listUtils";
 
 import { InnerDropdownDivProps } from "./Dropdown.types";
 
+/**
+ * @deprecated Use DropdownItem with the `as` prop instead.
+ */
 const DropdownDiv: React.FC<InnerDropdownDivProps> = ({
   children,
   className,

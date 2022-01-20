@@ -4,6 +4,9 @@ import { foldClassNames } from "../utilities/listUtils";
 
 import { InnerDropdownAnchorProps } from "./Dropdown.types";
 
+/**
+ * @deprecated Use DropdownItem with the `as` prop instead.
+ */
 const DropdownAnchor: React.FC<InnerDropdownAnchorProps> = ({
   children,
   className,
