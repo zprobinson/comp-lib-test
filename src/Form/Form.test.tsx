@@ -19,6 +19,7 @@ import {
   FormInputProps,
   FormProps,
   FormRadioProps,
+  FormSelectProps,
 } from "./Form.types";
 import { testBulmaProps } from "../bulmaTests/bulmaTests";
 import FormFile from "./FormFile";
@@ -814,4 +815,98 @@ describe("Form Radio Component", () => {
   });
 
   testBulmaProps("FormRadioLabel", renderComponent);
+});
+
+describe("Form Select Component", () => {
+  const renderComponent = (props: FormSelectProps) =>
+    render(<FormSelect {...props} />);
+
+  it("should render children correctly", () => {
+    const expected = "harvey was here";
+    const { getByTestId } = renderComponent({ children: expected });
+
+    const component = getByTestId("FormSelect");
+
+    expect(component).toHaveTextContent(expected);
+  });
+
+  it("should have outer div with select class", () => {
+    const expected = "select";
+    const { getByTestId } = renderComponent({});
+
+    const component = getByTestId("FormSelectContainer");
+
+    expect(component).toHaveClass(expected);
+    expect(component.tagName).toMatch(/div/i);
+  });
+
+  it("should have size class", () => {
+    const expected: FormSelectProps["size"] = "is-large";
+    const { getByTestId } = renderComponent({ size: expected });
+
+    const component = getByTestId("FormSelectContainer");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  it("should have color class", () => {
+    const expected: FormSelectProps["color"] = "is-warning";
+    const { getByTestId } = renderComponent({ color: expected });
+
+    const component = getByTestId("FormSelectContainer");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  it("should have state class", () => {
+    const expected: FormSelectProps["state"] = "is-hovered";
+    const { getByTestId } = renderComponent({ state: expected });
+
+    const component = getByTestId("FormSelectContainer");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  it("should have is-multiple class", () => {
+    const expected = "is-multiple";
+    const isMultiple: FormSelectProps["isMultiple"] = true;
+    const { getByTestId } = renderComponent({ isMultiple });
+
+    const component = getByTestId("FormSelectContainer");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  it("should have is-rounded class", () => {
+    const expected = "is-rounded";
+    const isRounded: FormSelectProps["isRounded"] = true;
+    const { getByTestId } = renderComponent({ isRounded });
+
+    const component = getByTestId("FormSelectContainer");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  it("should container inner select class name", () => {
+    const expected: FormSelectProps["_innerSelectClassName"] = "foo bar-baz";
+    const { getByTestId } = renderComponent({
+      _innerSelectClassName: expected,
+    });
+
+    const component = getByTestId("FormSelect");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  it("should have is-loading class on inner select", () => {
+    const expected = "is-loading";
+    const isLoading: FormSelectProps["isLoading"] = true;
+    const { getByTestId } = renderComponent({ isLoading });
+
+    const component = getByTestId("FormSelect");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  testBulmaProps("FormSelectContainer", renderComponent);
 });
