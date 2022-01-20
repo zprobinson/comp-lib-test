@@ -1,7 +1,9 @@
 import {
   BulmaComponentPropsWithoutRef,
+  BulmaHelpers,
   WithoutHelpers,
-} from "./../types/component";
+  Polymorphic,
+} from "../types";
 
 export type InnerCardHeaderTitleProps = WithoutHelpers<CardHeaderTitleProps>;
 
@@ -20,3 +22,8 @@ export type CardContentProps = BulmaComponentPropsWithoutRef<"div">;
 export type CardFooterProps = BulmaComponentPropsWithoutRef<"footer">;
 export type CardFooterItemAnchorProps = BulmaComponentPropsWithoutRef<"a">;
 export type CardFooterItemParagraphProps = BulmaComponentPropsWithoutRef<"div">;
+
+export type CardFooterItemProps<E extends React.ElementType> = Polymorphic<
+  E,
+  BulmaHelpers
+>;

@@ -20,8 +20,11 @@ import {
   CardHeaderTitleProps,
   CardImageProps,
   CardProps,
+  CardFooterItemProps,
 } from "./Card.types";
 import { testBulmaProps } from "../bulmaTests/bulmaTests";
+
+import CardFooterItem from "./CardFooterItem";
 
 describe("Card Component", () => {
   const renderComponent = (props: CardProps) => render(<Card {...props} />);
@@ -165,5 +168,47 @@ describe("Card Component", () => {
 
       expect(component).toHaveTextContent(expected);
     });
+  });
+
+  describe("Card Footer Item", () => {
+    const renderComponent = <E extends React.ElementType = React.ElementType>(
+      props: CardFooterItemProps<E>
+    ) => render(<CardFooterItem {...props} />);
+
+    it("should render children correctly", () => {
+      const expected = "harvey was here";
+      const { getByTestId } = renderComponent({ children: expected });
+
+      const component = getByTestId("CardFooterItem");
+
+      expect(component).toHaveTextContent(expected);
+    });
+
+    it("should have card-footer class", () => {
+      const expected = "card-footer";
+      const { getByTestId } = renderComponent({});
+
+      const component = getByTestId("CardFooterItem");
+
+      expect(component).toHaveClass(expected);
+    });
+
+    it("should render as an anchor tag", () => {
+      const { getByTestId } = renderComponent({ href: "test" });
+
+      const component = getByTestId("CardFooterItem");
+
+      expect(component.tagName).toMatch(/a/i);
+    });
+
+    it("should render as a div tag", () => {
+      const { getByTestId } = renderComponent({ as: "div" });
+
+      const component = getByTestId("CardFooterItem");
+
+      expect(component.tagName).toMatch(/div/i);
+    });
+
+    testBulmaProps("CardFooterItem", renderComponent);
   });
 });
