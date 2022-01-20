@@ -20,6 +20,7 @@ import {
   FormProps,
   FormRadioProps,
   FormSelectProps,
+  FormTextAreaProps,
 } from "./Form.types";
 import { testBulmaProps } from "../bulmaTests/bulmaTests";
 import FormFile from "./FormFile";
@@ -909,4 +910,76 @@ describe("Form Select Component", () => {
   });
 
   testBulmaProps("FormSelectContainer", renderComponent);
+});
+
+describe("Form Text Area Component", () => {
+  const renderComponent = (props: FormTextAreaProps) =>
+    render(<FormTextArea {...props} />);
+
+  it("should render children correctly", () => {
+    const expected = "harvey was here";
+    const { getByTestId } = renderComponent({ children: expected });
+
+    const component = getByTestId("FormTextArea");
+
+    expect(component).toHaveTextContent(expected);
+  });
+
+  it("should have textarea class", () => {
+    const expected = "textarea";
+    const { getByTestId } = renderComponent({});
+
+    const component = getByTestId("FormTextArea");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  it("should have size class", () => {
+    const expected: FormTextAreaProps["size"] = "is-normal";
+    const { getByTestId } = renderComponent({ size: expected });
+
+    const component = getByTestId("FormTextArea");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  it("should have color class", () => {
+    const expected: FormTextAreaProps["color"] = "is-info";
+    const { getByTestId } = renderComponent({ color: expected });
+
+    const component = getByTestId("FormTextArea");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  it("should have state class", () => {
+    const expected: FormTextAreaProps["state"] = "is-focused";
+    const { getByTestId } = renderComponent({ state: expected });
+
+    const component = getByTestId("FormTextArea");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  it("should have is-loading class", () => {
+    const expected = "is-loading";
+    const isLoading: FormTextAreaProps["isLoading"] = true;
+    const { getByTestId } = renderComponent({ isLoading });
+
+    const component = getByTestId("FormTextArea");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  it("should have has-fixed-size class", () => {
+    const expected = "has-fixed-size";
+    const hasFixedSize: FormTextAreaProps["hasFixedSize"] = true;
+    const { getByTestId } = renderComponent({ hasFixedSize });
+
+    const component = getByTestId("FormTextArea");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  testBulmaProps("FormTextArea", renderComponent);
 });
