@@ -4,6 +4,9 @@ import { foldClassNames } from "../utilities/listUtils";
 
 import { InnerNavbarItemAnchorProps } from "./Navbar.types";
 
+/**
+ * @deprecated Use NavbarItem with the `as` prop instead.
+ */
 const NavbarItemAnchor: React.FC<InnerNavbarItemAnchorProps> = ({
   children,
   className,

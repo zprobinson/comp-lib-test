@@ -5,7 +5,9 @@ import {
   OneOrMore,
   PrimaryColor,
   SecondaryColor,
-} from "..";
+  Polymorphic,
+  BulmaHelpers,
+} from "../types";
 
 export type InnerNavbarProps = WithoutHelpers<NavbarProps>;
 export type InnerNavbarBurgerProps = WithoutHelpers<NavbarBurgerProps>;
@@ -38,11 +40,17 @@ export type NavbarMenuProps = BulmaComponentPropsWithoutRef<"div"> & {
 export type NavbarMenuStartProps = BulmaComponentPropsWithoutRef<"div">;
 export type NavbarMenuEndProps = NavbarMenuStartProps;
 
+/**
+ * @deprecated Use NavbarItem with the `as` prop instead.
+ */
 export type NavbarItemAnchorProps = BulmaComponentPropsWithoutRef<"a"> & {
   isActive?: boolean;
   isExpanded?: boolean;
   isTab?: boolean;
 };
+/**
+ * @deprecated Use NavbarItem with the `as` prop instead.
+ */
 export type NavbarItemDivProps = BulmaComponentPropsWithoutRef<"div"> & {
   isActive?: boolean;
   hasDropdown?: boolean;
@@ -51,6 +59,18 @@ export type NavbarItemDivProps = BulmaComponentPropsWithoutRef<"div"> & {
   isExpanded?: boolean;
   isTab?: boolean;
 };
+
+export type NavbarItemProps<E extends React.ElementType> = Polymorphic<
+  E,
+  BulmaHelpers & {
+    isActive?: boolean;
+    hasDropdown?: boolean;
+    hasDropdownUp?: boolean;
+    isHoverable?: boolean;
+    isExpanded?: boolean;
+    isTab?: boolean;
+  }
+>;
 
 export type NavbarLinkProps = BulmaComponentPropsWithoutRef<"a"> & {
   isArrowless?: boolean;

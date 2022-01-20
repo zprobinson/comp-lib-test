@@ -5,6 +5,7 @@ export { default as NavbarDivider } from "./NavbarDivider";
 export { default as NavbarDropdown } from "./NavbarDropdown";
 export { default as NavbarItemAnchor } from "./NavbarItemAnchor";
 export { default as NavbarItemDiv } from "./NavbarItemDiv";
+export { default as NavbarItem } from "./NavbarItem";
 export { default as NavbarLink } from "./NavbarLink";
 export { default as NavbarMenu } from "./NavbarMenu";
 export { default as NavbarMenuEnd } from "./NavbarMenuEnd";
@@ -17,6 +18,7 @@ export {
   NavbarDropdownProps,
   NavbarItemAnchorProps,
   NavbarItemDivProps,
+  NavbarItemProps,
   NavbarLinkProps,
   NavbarMenuProps,
   NavbarMenuEndProps,

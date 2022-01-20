@@ -6,6 +6,7 @@ import NavbarBrand from "./NavbarBrand";
 import NavbarDropdown from "./NavbarDropdown";
 import NavbarItemAnchor from "./NavbarItemAnchor";
 import NavbarItemDiv from "./NavbarItemDiv";
+import NavbarItem from "./NavbarItem";
 import NavbarLink from "./NavbarLink";
 import NavbarMenu from "./NavbarMenu";
 import NavbarMenuStart from "./NavbarMenuStart";
@@ -16,6 +17,7 @@ import {
   NavbarDropdownProps,
   NavbarItemAnchorProps,
   NavbarItemDivProps,
+  NavbarItemProps,
   NavbarLinkProps,
   NavbarMenuProps,
   NavbarMenuStartProps,
@@ -164,4 +166,46 @@ describe("Navbar Menu End Component", () => {
   });
 
   testBulmaProps("NavbarMenuEnd", renderComponent);
+});
+
+describe("Navbar Item Component", () => {
+  const renderComponent = <E extends React.ElementType = React.ElementType>(
+    props: NavbarItemProps<E>
+  ) => render(<NavbarItem {...props} />);
+
+  it("should render children correctly", () => {
+    const expected = "harvey was here";
+    const { getByTestId } = renderComponent({ children: expected });
+
+    const component = getByTestId("NavbarItem");
+
+    expect(component).toHaveTextContent(expected);
+  });
+
+  it("should have navbar-item class", () => {
+    const expected = "navbar-item";
+    const { getByTestId } = renderComponent({});
+
+    const component = getByTestId("NavbarItem");
+
+    expect(component).toHaveClass(expected);
+  });
+
+  it("should render as a div tag", () => {
+    const { getByTestId } = renderComponent({});
+
+    const component = getByTestId("NavbarItem");
+
+    expect(component.tagName).toMatch(/div/i);
+  });
+
+  it("should render as an anchor tag", () => {
+    const { getByTestId } = renderComponent({ as: "a", href: "test" });
+
+    const component = getByTestId("NavbarItem");
+
+    expect(component.tagName).toMatch(/a/i);
+  });
+
+  testBulmaProps("NavbarItem", renderComponent);
 });
