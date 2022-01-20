@@ -4,6 +4,9 @@ import { foldClassNames } from "../utilities/listUtils";
 
 import { InnerTagSpanProps } from "./Tag.types";
 
+/**
+ * @deprecated Use Tag with the `as` prop instead.
+ */
 const TagSpan: React.FC<InnerTagSpanProps> = ({
   children,
   className,
@@ -25,4 +28,7 @@ const TagSpan: React.FC<InnerTagSpanProps> = ({
   );
 };
 
+/**
+ * @deprecated Use Tag with the `as` prop instead.
+ */
 export default withBulmaProps(TagSpan);

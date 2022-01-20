@@ -4,6 +4,9 @@ import { foldClassNames } from "../utilities/listUtils";
 
 import { InnerTagAnchorProps } from "./Tag.types";
 
+/**
+ * @deprecated Use Tag with the `as` prop instead.
+ */
 const TagAnchor: React.FC<InnerTagAnchorProps> = ({
   children,
   className,
@@ -25,4 +28,7 @@ const TagAnchor: React.FC<InnerTagAnchorProps> = ({
   );
 };
 
+/**
+ * @deprecated Use Tag with the `as` prop instead.
+ */
 export default withBulmaProps(TagAnchor);
