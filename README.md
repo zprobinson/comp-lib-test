@@ -10,13 +10,13 @@ Until internal private servers are set up and configured, you will act as your o
 
 1. Clone this git repository locally to your machine.
 2. Globally install [Verdaccio](https://verdaccio.org/), a private proxy registry:
-3. `npm install --global verdaccio`
-4. From the command prompt, run the following command to start your private proxy registry
-5. `verdaccio`
-6. It will be running on `http://localhost:4873`
-7. Navigate to the root directory of your local version of the repository and run the following script:
-8. `npm run local-publish`
-9. If necessary, create a local user to sign in as before the local-publish.
+   1. `npm install --global verdaccio`
+3. From the command prompt, run the following command to start your private proxy registry
+   1. `verdaccio`
+4. It will be running on `http://localhost:4873`
+5. Navigate to the root directory of your local version of the repository and run the following script:
+   1. `npm run local-publish`
+   2. If necessary, create a local user to sign in as before the local-publish.
 
 You now have a private registry running on your local machine and have successfully published the library to it.
 
@@ -24,7 +24,7 @@ In order to use your locally hosted npm package, we need to utilize the `---regi
 
 1. Navigate to your project directory where you'd like to use this component library.
 2. Run the following command:
-3. `npm install bulma-react --registry http://localhost:4873`
+   1. `npm install bulma-react --registry http://localhost:4873`
 
 You should now be ready to use Bulma React!
 
